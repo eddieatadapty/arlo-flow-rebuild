@@ -1,0 +1,16 @@
+{
+  "flows": [
+    {"channel": "Meta", "headline": "Know who’s there, and who shouldn’t be.", "paywall_opens_on": "Every camera · Monthly, $19.99/mo", "note": "asks “What should Arlo tell you about?”, then shows a sample Motion Alert"},
+    {"channel": "Meta", "headline": "Some moments you keep, some you share.", "paywall_opens_on": "their saved clip, Yearly $219.00 a year · $18.25/mo", "note": "their first clip saved in the Feed before the paywall"},
+    {"channel": "Meta", "headline": "See who’s at the door. Answer from anywhere.", "paywall_opens_on": "Single Camera, $9.99/mo", "note": "the doorbell rings before any price"}
+  ],
+  "prices": {"monthly": "$19.99", "yearly": "$219.00", "single_camera_monthly": "$9.99", "trial": "1 month", "source": "US App Store In-App Purchases (Smart Aware, Smart Aware Single); the free month from the FAQ on us.arlo.com/pages/arlo-secure"},
+  "today": {"text": "the free month of Arlo Secure starts when setup ends in the app, and after it your FAQ points people to my.arlo.com to subscribe", "source": "site_faq"},
+  "ideas": [
+    {"n": 1, "title": "Ask what Arlo should watch for, then use the answer", "screen": "Ask", "outcome": "CR +10–20%"},
+    {"n": 2, "title": "Show a smart alert before the price", "screen": "First value", "outcome": "CR +10–15%"},
+    {"n": 3, "title": "Sell the plan in the app, the day the free month starts", "screen": "Paywall", "outcome": "CR +10–20%"},
+    {"n": 4, "title": "Price by the cameras they own, and make the year add up", "screen": "Paywall", "outcome": "ARPU +10–15%"},
+    {"n": 5, "title": "Put your proof where they decide", "screen": "Paywall", "outcome": "CR +10–15%"}
+  ]
+}
