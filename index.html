@@ -711,7 +711,7 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 /* nav */
 .jn-navw{position:sticky;top:0;z-index:60;padding:12px 12px 0}
 .jn-nav{max-width:1200px;margin:0 auto;height:60px;display:flex;align-items:center;gap:14px;padding:0 10px 0 22px;border-radius:999px;
-  background:rgba(243,241,237,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--jn-hair)}
+  background:var(--jn-navbg,rgba(243,241,237,.88));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--jn-hair)}
 .jn-logo{display:flex;align-items:center;gap:9px;font-weight:600;font-size:16px;letter-spacing:-.01em;white-space:nowrap;color:var(--jn-ink)}
 .jn-logo img{height:var(--jn-logo-h,24px);width:auto;display:block}
 .jn-logo img.jn-ic{height:28px;border-radius:7px}
@@ -788,12 +788,11 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-vid video,.jn-vid > img{width:100%;height:100%;object-fit:cover;display:block}
 .jn-vid > img.jn-fit{object-fit:contain;background:#fff}
 .jn-tag{position:absolute;z-index:3;top:10px;left:10px;background:rgba(255,255,255,.94);color:var(--jn-ink);font-size:11px;font-weight:600;letter-spacing:.06em;padding:5px 10px;border-radius:999px;display:flex;gap:6px;align-items:center;text-transform:uppercase}
-.jn-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:#0866FF}
-.jn-tag.asa::before{background:#0a84ff}
-.jn-tag.img::before{background:#8a8a8e}
+.jn-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,#0866FF)}
 .jn-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
 .jn-strip img{width:100%;aspect-ratio:var(--ar,9/16);object-fit:cover;border-radius:8px;display:block;background:#ddd}
 .jn-adb .hook{font-size:24px;font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--jn-ink)}
+.jn-adb .hook small{display:block;font-size:15px;font-weight:400;letter-spacing:0;color:var(--jn-mute);margin-top:4px}
 .jn-adb .en{margin-top:6px;font-size:14.5px;color:var(--jn-mute);line-height:1.45}
 .jn-adb .meta{margin-top:10px;font-size:13.5px;color:var(--jn-mute);line-height:1.45}
 .jn-adb dl{margin-top:8px;font-size:15px;line-height:1.5}
@@ -802,6 +801,16 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-adb .go{margin-top:20px}
 .jn-more{margin-top:16px;font-size:14px;line-height:1.55;color:var(--jn-mute);max-width:880px}
 .jn-foot-l{margin-top:8px;font-size:14px;line-height:1.55;color:var(--jn-mute);max-width:880px}
+/* every ad as its own card, stacked (Atlas): wide media for 16:9, a 300 px column for portrait ads and searches */
+.jn-adlist{display:flex;flex-direction:column;gap:12px;margin-top:44px}
+.jn-card{background:var(--jn-cream);border-radius:20px;padding:32px;display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:start}
+.jn-card.tall{grid-template-columns:300px 1fr;align-items:center}
+.jn-card .jn-media{max-width:none;margin:0;width:100%}
+.jn-card .jn-vid{aspect-ratio:var(--ar,16/9);max-height:none}
+.jn-card.tall .jn-vid{max-height:560px}
+.jn-card .jn-vid:has(> .jn-post){aspect-ratio:9/16}
+.jn-card .jn-strip img{aspect-ratio:var(--ar,16/9)}
+.jn-card .jn-adb .go{margin-top:20px}
 /* Apple Ads search ad, as the App Store shows it (animated) */
 .jn-vid.asa{--ar:3/4;background:#fff}
 .jn-asa{position:absolute;inset:0;background:#fff;color:#111;padding:44px 14px 14px;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,sans-serif;display:flex;flex-direction:column;gap:12px}
@@ -839,7 +848,7 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 /* idea rows */
 .jn-list{margin-top:40px;display:flex;flex-direction:column;max-width:980px;border-top:1px solid var(--jn-hair)}
 .jn-row{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:26px 6px;border-bottom:1px solid var(--jn-hair);width:100%;text-align:left;transition:background .2s}
-.jn-row:hover{background:#faf9f7}
+.jn-row:hover{background:var(--jn-hover,#faf9f7)}
 .jn-row > span{font-size:22px;font-weight:600;color:var(--jn-mute);letter-spacing:-.02em;padding-top:2px;font-variant-numeric:tabular-nums}
 .jn-row h3{font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.3;color:var(--jn-ink)}
 .jn-row p{font-size:15.5px;line-height:1.55;color:var(--jn-mute);margin-top:6px;max-width:780px}
@@ -853,7 +862,10 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-og{position:absolute;left:50%;top:32px;width:58%;max-width:300px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,1fr);gap:3px;opacity:.95}
 .jn-og i{aspect-ratio:1;background:var(--c);display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font:600 12px/1.25 Inter,sans-serif;font-style:normal;color:#fff;overflow:hidden}
 .jn-osh::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(27,27,26,.98) 46%,rgba(27,27,26,.1) 80%)}
-.jn-osh > *:not(.jn-og){position:relative;z-index:2}
+.jn-osh > *:not(.jn-og):not(.jn-oimg){position:relative;z-index:2}
+.jn-osh.jn-world{background:var(--jn-world,var(--jn-dark))}
+.jn-osh.jn-world::after{background:linear-gradient(0deg,rgba(0,0,0,.94) 46%,rgba(0,0,0,.08) 82%)}
+.jn-oimg{position:absolute;left:50%;top:36px;width:64%;max-width:330px;transform:translateX(-50%);opacity:.92;filter:drop-shadow(0 24px 40px rgba(0,0,0,.45))}
 .jn-osh .k{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 .jn-osh h3{font-size:30px;font-weight:600;letter-spacing:-.03em;margin-top:8px;line-height:1.15;max-width:460px;color:#fff}
 .jn-nums{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
@@ -878,6 +890,7 @@ html.jn body > .au-nav,html.jn #top,html.jn .au-mx-stats,html.jn #why,html.jn #i
 .jn-ph .jn-h1p b{font-weight:600;color:var(--jn-mute)}
 .jn-tool{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:24px}
 .jn-seg{display:inline-flex;background:var(--jn-cream);border-radius:999px;padding:4px}
+.jn-langnote{font-size:13.5px;line-height:1.5;color:var(--jn-mute);margin-top:12px;max-width:780px}
 .jn-seg button{height:36px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--jn-ink2)}
 .jn-seg button.on{background:#fff;color:var(--jn-ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 html.jn #duo{max-width:1200px;width:auto;margin:0 auto;padding:0 40px}
@@ -890,21 +903,22 @@ html.jn .au-walk .au-walkbar i{display:block;height:3px;border-radius:3px;backgr
 html.jn .au-walk .au-walkbar i b{display:block;height:100%;background:var(--jn-lt);width:0;transition:width .5s}
 html.jn .au-walk:not(.on) .au-walkbar{display:none}
 html.jn .au-walk.on{position:sticky;top:84px}
-html.jn .au-duo-steps{justify-content:flex-start;margin-top:14px;gap:8px}
-html.jn .au-duo-steps button{height:44px;padding:0 18px;border:0;background:var(--jn-cream);color:var(--jn-ink2);font-size:15px;font-weight:500;border-radius:999px}
+html.jn .au-duo-steps{justify-content:flex-start;margin-top:14px;gap:6px}
+html.jn .au-duo-steps button{height:44px;padding:0 15px;border:0;background:var(--jn-cream);color:var(--jn-ink2);font-size:14.5px;font-weight:500;border-radius:999px;white-space:nowrap}
 html.jn .au-duo-steps button:hover{background:var(--jn-cream2)}
 html.jn .au-duo-steps button.au-today{background:#fff;box-shadow:inset 0 0 0 1.5px var(--jn-faint);border:0;color:var(--jn-mute)}
 html.jn .au-duo-steps button.on{background:var(--jn-ink);color:#fff;box-shadow:none}
 html.jn .au-duo-steps button.au-diff::after{background:var(--jn-acc2);border-color:#fff}
 html.jn .au-duo-sep{color:var(--jn-mute);letter-spacing:.12em;font-weight:500}
-html.jn .au-duo-stepcap{text-align:left;margin:14px 0 0;color:var(--jn-ink2);max-width:780px;font-size:15px}
+html.jn .au-duo-stepcap{text-align:left;margin:14px 0 0;color:var(--jn-mute);max-width:900px;font-size:15.5px;min-height:24px}
+html.jn .au-duo-stepcap b{color:var(--jn-ink);font-weight:600}
 html.jn .au-duo.au-n3{margin-top:30px;gap:28px;width:auto;margin-left:0;transform:none}
 html.jn .au-duo-ph{width:312px}
 html.jn .au-duo-fr{width:312px;height:675px;border-radius:46px;box-shadow:0 0 0 6px var(--au-ring),0 30px 60px rgba(27,27,26,.22)}
 html.jn .au-duo-fr iframe{transform:scale(.8)}
 html.jn .au-duo-pill{height:34px;background:var(--jn-cream);box-shadow:none;border-radius:999px;font-size:13.5px;font-weight:500;padding:0 14px 0 6px;max-width:332px;color:var(--jn-ink2);margin:0 auto 14px;width:fit-content}
-html.jn .au-duo-pill b{height:24px;padding:0 9px;display:inline-flex;align-items:center;background:#0866FF;font-size:11.5px;font-weight:500;border-radius:99px}
-html.jn .au-duo-pill.asa b{background:#1b1b1a}
+html.jn .au-duo-pill b{height:24px;padding:0 9px;display:inline-flex;align-items:center;background:var(--au-ring);font-size:11.5px;font-weight:500;border-radius:99px}
+html.jn .au-duo-steps .jn-n{font-variant-numeric:tabular-nums}
 html.jn .au-duo-cap{text-align:center;color:var(--jn-mute);min-height:84px;margin-top:16px;font-size:14px}
 html.jn .au-duo-cap .au-duo-k{color:var(--jn-ink);letter-spacing:.12em;font-size:12px;margin-bottom:4px}
 html.jn .au-duo-recs{margin-top:6px}
@@ -912,7 +926,7 @@ html.jn .au-rec{background:var(--jn-cream);border:0;border-radius:14px}
 html.jn .au-rec:hover,html.jn .au-rec.on{background:#fff;box-shadow:inset 0 0 0 1.5px var(--au-ring)}
 html.jn .au-rec>i{background:var(--au-ring)}
 html.jn .au-rec mark{background:var(--jn-soft);color:var(--jn-acc)}
-html.jn .au-rec-v{color:var(--jn-ink);letter-spacing:.1em}
+html.jn .au-rec-v{color:var(--au-ring);letter-spacing:.1em}
 html.jn .au-duo-tog button{border:0;background:var(--jn-cream)}
 html.jn .au-duo-tog button.on{background:var(--jn-ink)}
 .jn-icards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:64px}
@@ -924,7 +938,7 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
 .jn-icard h4{font-size:20px;font-weight:600;letter-spacing:-.02em;color:var(--jn-ink)}
 .jn-icard p{font-size:15px;line-height:1.55;color:var(--jn-mute)}
 .jn-icard .kept{font-size:13px;color:var(--jn-mute);border-top:1px solid var(--jn-hair);padding-top:10px;margin-top:6px}
-.jn-qr{position:relative;overflow:hidden;margin-top:40px;border-radius:20px;background:var(--jn-dark);color:#fff;padding:30px 32px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.jn-qr{position:relative;overflow:hidden;margin-top:40px;border-radius:20px;background:var(--jn-world,var(--jn-dark));color:#fff;padding:30px 32px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
 .jn-qg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(4,1fr);gap:3px;padding:3px}
 .jn-qg i{background:var(--c);opacity:.85}
 .jn-qr::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(27,27,26,.95) 30%,rgba(27,27,26,.55))}
@@ -944,7 +958,8 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
   .jn-hin{grid-template-columns:1fr;padding-top:120px;padding-bottom:36px}
   .jn-hero{min-height:0}
   .jn-fan{height:330px;max-width:520px}
-  .jn-two,.jn-lib,.jn-outc{grid-template-columns:1fr}
+  .jn-two,.jn-lib,.jn-outc,.jn-card,.jn-card.tall{grid-template-columns:1fr}
+  .jn-card.tall .jn-media{max-width:300px}
   .jn-two{gap:36px}
   .jn-stats > .jn-wrap{grid-template-columns:repeat(2,1fr)}
   .jn-stat:nth-child(3){border-left:0}
@@ -967,7 +982,7 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
   .jn-fan{display:none}
   .jn-hin{padding:104px 22px 30px}
   .jn-sec{padding-top:72px}
-  .jn-lib{padding:18px;gap:24px}
+  .jn-lib,.jn-card{padding:18px;gap:24px}
   .jn-row{grid-template-columns:40px 1fr;gap:10px}
   .jn-icards{grid-template-columns:1fr}
   .jn-osh{min-height:400px;padding:26px 22px}
@@ -975,7 +990,7 @@ html.jn .au-duo-tog button.on{background:var(--jn-ink)}
 }
 @media (max-width:520px){.jn-logo span.jn-name,.jn-logo .jn-mask{display:none}.jn-logo img:not(.jn-ic){max-width:96px;height:auto;max-height:22px;object-fit:contain;object-position:left center}.jn-demo{padding:0 11px}.jn-stat b{font-size:30px}}
 @media (prefers-reduced-motion:reduce){.jn-fan img.jn-ic,.jn-post-m img{animation:none}.jn-slots i::before,.jn-slots i span{animation:none;opacity:.8}}
-html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--jn-soft:#e2f8f1}
+html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--jn-soft:#d6dde0;--jn-cream:#e9edee;--jn-cream2:#dbe1e4;--jn-hover:#f2f4f5;--jn-navbg:rgba(233,237,238,.88);--jn-world:radial-gradient(70% 90% at 82% 8%,rgba(51,204,153,.55),transparent 62%),radial-gradient(55% 70% at 8% 100%,rgba(0,40,60,.35),transparent 70%),linear-gradient(180deg,#061720,#08141a)}html.jn .jn-qg{display:none}html.jn .jn-qr::before{background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(0,0,0,.2))}
 /* JUNOCSS:END */
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" id="jnFont">
@@ -1082,21 +1097,21 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
       </div>
     </div>
     <div class="au-duo-stats"><div><b>116</b><span>live Arlo ads in the US Meta Ad Library, in 128 versions</span></div><div><b>0</b><span>of them link to the App Store: 102 versions go to us.arlo.com, 23 to Amazon</span></div><div><b>1</b><span>first launch every buyer meets, whichever ad sold the camera</span></div></div>
-    <div class="au-pf"><div class="au-pf-h"><h3>Your ads, sorted by promise</h3><p>Share of the 128 ad versions, US Meta Ad Library, 16 Nov 2026</p></div><div class="au-pf-bar"><i style="flex:50;background:var(--st-accent)" title="Moments you keep"></i><i style="flex:25;background:var(--st-ink3)" title="Products and Amazon"></i><i style="flex:18;background:var(--st-hi)" title="Smart alerts"></i><i style="flex:16;background:var(--st-ink2)" title="Your home, your way"></i><i style="flex:11;background:var(--st-link)" title="Video Doorbell"></i><i style="flex:8;background:var(--st-mark)" title="Privacy"></i></div><div class="au-pf-leg"><span><i style="background:var(--st-accent)"></i>Moments you keep · 50</span><span><i style="background:var(--st-ink3)"></i>Products and Amazon · 25</span><span><i style="background:var(--st-hi)"></i>Smart alerts · 18</span><span><i style="background:var(--st-ink2)"></i>Your home, your way · 16</span><span><i style="background:var(--st-link)"></i>Video Doorbell · 11</span><span><i style="background:var(--st-mark)"></i>Privacy · 8</span></div><div class="au-pf-grid"><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/ad-b-3.jpg" alt="A frame from the ad"><span class="au-pf-tag">Most versions · running now</span><span class="au-pf-n">50 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Bath day on the patio, and the dog has other plans. Some moments you keep, some you share.”</div><div class="au-pf-meta">42 ads since 11 Sep 2026, with “A Sunday afternoon…”, “Homework on the patio…” and #CaughtOnArlo · all link to us.arlo.com</div><dl><dt>In the ad</dt><dd>Family life on the patio and in the yard, played back as clips: “Rachel and Dog on Patio · Saturday, October 4 · 2:35 PM”.</dd><dt>The promise</dt><dd>The moments at home, kept and shared.</dd><dt>Today it lands on</dt><dd>The Essential Solar camera on us.arlo.com, then setup in the app, where the free month starts.</dd></dl><div class="au-pf-go"><button type="button" data-duogo="b">Open its flow ›</button></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/site/solar-cam.png" alt="A frame from the ad"><span class="au-pf-tag">17 link to Amazon</span><span class="au-pf-n">25 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Outdoor security powered by the sun. Meet the new Arlo Essential Solar Security Camera, available on Amazon.”</div><div class="au-pf-meta">25 ads since 11 Sep 2026: solar power, 2K and 4K specs, Pro 6 and Ultra 3 kits · 17 to amazon.com, 8 to us.arlo.com</div><dl><dt>In the ad</dt><dd>The camera itself: battery life, solar panel, night vision, “Shop it on Amazon with the account you already use.”</dd><dt>The promise</dt><dd>The right camera, at a good price.</dd><dt>Today it lands on</dt><dd>A product page, then setup in the app.</dd></dl><div class="au-pf-go"><span>No phone of its own: Amazon buyers bring no campaign, so the device they pair would pick the version.</span></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/ad-a-1.jpg" alt="A frame from the ad"><span class="au-pf-tag">Sells the plan itself</span><span class="au-pf-n">18 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“The Arlo Secure Early Warning System sets a new standard in proactive protection. Know who's there and who shouldn't be…”</div><div class="au-pf-meta">18 ads since 11 Sep 2026, with “Arlo knows the difference between the dog on the patio and a real threat.” · this one links to us.arlo.com/pages/arlo-secure</div><dl><dt>In the ad</dt><dd>Detections on real camera views: “Package detected on Doorbell Camera”, “Family Car recognized on Driveway Camera”, “Fire may have been detected on deck”.</dd><dt>The promise</dt><dd>Alerts that say what happened, not just that something moved.</dd><dt>Today it lands on</dt><dd>Your plans page on us.arlo.com: the plan sold on the web, before there is a camera.</dd></dl><div class="au-pf-go"><button type="button" data-duogo="a">Open its flow ›</button></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/crop/driveway.jpg" alt="A frame from the ad"><span class="au-pf-tag">Since July</span><span class="au-pf-n">16 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Every home is different. That’s why Arlo lets you choose exactly what to keep an eye on.”</div><div class="au-pf-meta">12 ads since 21 Jul 2026, with “Introducing Arlo. Secure every corner of your home…” · all link to us.arlo.com</div><dl><dt>In the ad</dt><dd>Coverage and set-up: “the front gate, driveway, or even the dog’s favorite spot”.</dd><dt>The promise</dt><dd>Watch exactly the places I care about.</dd><dt>Today it lands on</dt><dd>us.arlo.com, then setup in the app.</dd></dl><div class="au-pf-go"><span>No phone of its own: it would open version A, where they pick what to be told about.</span></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/ad-c-2.jpg" alt="A frame from the ad"><span class="au-pf-tag">6 link to Amazon</span><span class="au-pf-n">11 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Turns out the fix wasn't WebMD. It was better home security!”</div><div class="au-pf-meta">11 ads since 11 Sep 2026, with “See who's at your door, head to toe, with the Arlo Video Doorbell 2K.” · 5 to us.arlo.com, 6 to amazon.com</div><dl><dt>In the ad</dt><dd>A creator unboxes the doorbell, pairs it and answers it from her kitchen: “shows you who's at the door in crisp detail… Answer from anywhere”.</dd><dt>The promise</dt><dd>See who’s at the door, and answer from anywhere.</dd><dt>Today it lands on</dt><dd>Video doorbells on us.arlo.com or Amazon, then setup in the app.</dd></dl><div class="au-pf-go"><button type="button" data-duogo="c">Open its flow ›</button></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/ad-b-2.jpg" alt="A frame from the ad"><span class="au-pf-tag">Since October</span><span class="au-pf-n">8 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Your home is private. Arlo keeps it that way.”</div><div class="au-pf-meta">8 ads since 15 Oct 2026, with “See what's happening at home from anywhere, without giving up your privacy to do it.” · all link to us.arlo.com</div><dl><dt>In the ad</dt><dd>Encryption and control: “Your data & your footage is in your control.”</dd><dt>The promise</dt><dd>Security that doesn’t watch me back.</dd><dt>Today it lands on</dt><dd>us.arlo.com, then setup in the app.</dd></dl><div class="au-pf-go"><span>No phone of its own: it would open version B, built on clips that stay theirs.</span></div></div></article></div><p class="au-pf-note">We read every active ad on the Arlo Smart Home page in the US and grouped them by what they promise; counts are ad versions, not spend. Three promises get a phone of their own below.</p></div>
-    <div class="au-duo-h"><h3>Three ads, three versions</h3><p>Left to right: a buyer from your Early Warning System ad, your “Bath day on the patio” ad and your Video Doorbell ad. Tap the steps, or tap inside any phone; the other two follow to their own version of that step.</p></div>
+    <div class="au-pf"><div class="au-pf-h"><h3>Your ads, sorted by promise</h3><p>Share of the 128 ad versions, US Meta Ad Library, 16 Nov 2026</p></div><div class="au-pf-bar"><i style="flex:50;background:var(--st-accent)" title="Moments you keep"></i><i style="flex:25;background:var(--st-ink3)" title="Products and Amazon"></i><i style="flex:18;background:var(--st-hi)" title="Smart alerts"></i><i style="flex:16;background:var(--st-ink2)" title="Your home, your way"></i><i style="flex:11;background:var(--st-link)" title="Video Doorbell"></i><i style="flex:8;background:var(--st-mark)" title="Privacy"></i></div><div class="au-pf-leg"><span><i style="background:var(--st-accent)"></i>Moments you keep · 50</span><span><i style="background:var(--st-ink3)"></i>Products and Amazon · 25</span><span><i style="background:var(--st-hi)"></i>Smart alerts · 18</span><span><i style="background:var(--st-ink2)"></i>Your home, your way · 16</span><span><i style="background:var(--st-link)"></i>Video Doorbell · 11</span><span><i style="background:var(--st-mark)"></i>Privacy · 8</span></div><div class="au-pf-grid"><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/ad-b-3.jpg" alt="A frame from the ad"><span class="au-pf-tag">Most versions · running now</span><span class="au-pf-n">50 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Bath day on the patio, and the dog has other plans. Some moments you keep, some you share.”</div><div class="au-pf-meta">42 ads since 11 Sep 2026, with “A Sunday afternoon…”, “Homework on the patio…” and #CaughtOnArlo · all link to us.arlo.com</div><dl><dt>In the ad</dt><dd>Family life on the patio and in the yard, played back as clips: “Rachel and Dog on Patio · Saturday, October 4 · 2:35 PM”.</dd><dt>The promise</dt><dd>The moments at home, kept and shared.</dd><dt>Today it lands on</dt><dd>The Essential Solar camera on us.arlo.com, then setup in the app, where the free month starts.</dd></dl><div class="au-pf-go"><button type="button" data-duogo="b">Open its flow ›</button></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/site/solar-cam.png" alt="A frame from the ad"><span class="au-pf-tag">17 link to Amazon</span><span class="au-pf-n">25 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Outdoor security powered by the sun. Meet the new Arlo Essential Solar Security Camera, available on Amazon.”</div><div class="au-pf-meta">25 ads since 11 Sep 2026: solar power, 2K and 4K specs, Pro 6 and Ultra 3 kits · 17 to amazon.com, 8 to us.arlo.com</div><dl><dt>In the ad</dt><dd>The camera itself: battery life, solar panel, night vision, “Shop it on Amazon with the account you already use.”</dd><dt>The promise</dt><dd>The right camera, at a good price.</dd><dt>Today it lands on</dt><dd>A product page, then setup in the app.</dd></dl><div class="au-pf-go"><span>No phone of its own: Amazon buyers bring no campaign, so the device they pair would pick the flow.</span></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/ad-a-1.jpg" alt="A frame from the ad"><span class="au-pf-tag">Sells the plan itself</span><span class="au-pf-n">18 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“The Arlo Secure Early Warning System sets a new standard in proactive protection. Know who's there and who shouldn't be…”</div><div class="au-pf-meta">18 ads since 11 Sep 2026, with “Arlo knows the difference between the dog on the patio and a real threat.” · this one links to us.arlo.com/pages/arlo-secure</div><dl><dt>In the ad</dt><dd>Detections on real camera views: “Package detected on Doorbell Camera”, “Family Car recognized on Driveway Camera”, “Fire may have been detected on deck”.</dd><dt>The promise</dt><dd>Alerts that say what happened, not just that something moved.</dd><dt>Today it lands on</dt><dd>Your plans page on us.arlo.com: the plan sold on the web, before there is a camera.</dd></dl><div class="au-pf-go"><button type="button" data-duogo="a">Open its flow ›</button></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/crop/driveway.jpg" alt="A frame from the ad"><span class="au-pf-tag">Since July</span><span class="au-pf-n">16 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Every home is different. That’s why Arlo lets you choose exactly what to keep an eye on.”</div><div class="au-pf-meta">12 ads since 21 Jul 2026, with “Introducing Arlo. Secure every corner of your home…” · all link to us.arlo.com</div><dl><dt>In the ad</dt><dd>Coverage and set-up: “the front gate, driveway, or even the dog’s favorite spot”.</dd><dt>The promise</dt><dd>Watch exactly the places I care about.</dd><dt>Today it lands on</dt><dd>us.arlo.com, then setup in the app.</dd></dl><div class="au-pf-go"><span>No phone of its own: it would open the Early Warning flow, where they pick what to be told about.</span></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/ad-c-2.jpg" alt="A frame from the ad"><span class="au-pf-tag">6 link to Amazon</span><span class="au-pf-n">11 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Turns out the fix wasn't WebMD. It was better home security!”</div><div class="au-pf-meta">11 ads since 11 Sep 2026, with “See who's at your door, head to toe, with the Arlo Video Doorbell 2K.” · 5 to us.arlo.com, 6 to amazon.com</div><dl><dt>In the ad</dt><dd>A creator unboxes the doorbell, pairs it and answers it from her kitchen: “shows you who's at the door in crisp detail… Answer from anywhere”.</dd><dt>The promise</dt><dd>See who’s at the door, and answer from anywhere.</dd><dt>Today it lands on</dt><dd>Video doorbells on us.arlo.com or Amazon, then setup in the app.</dd></dl><div class="au-pf-go"><button type="button" data-duogo="c">Open its flow ›</button></div></div></article><article class="au-pf-c"><div class="au-pf-cov"><img src="assets/ads/ad-b-2.jpg" alt="A frame from the ad"><span class="au-pf-tag">Since October</span><span class="au-pf-n">8 versions</span></div><div class="au-pf-bd"><div class="au-pf-hook">“Your home is private. Arlo keeps it that way.”</div><div class="au-pf-meta">8 ads since 15 Oct 2026, with “See what's happening at home from anywhere, without giving up your privacy to do it.” · all link to us.arlo.com</div><dl><dt>In the ad</dt><dd>Encryption and control: “Your data & your footage is in your control.”</dd><dt>The promise</dt><dd>Security that doesn’t watch me back.</dd><dt>Today it lands on</dt><dd>us.arlo.com, then setup in the app.</dd></dl><div class="au-pf-go"><span>No phone of its own: it would open the moments flow, built on clips that stay theirs.</span></div></div></article></div><p class="au-pf-note">We read every active ad on the Arlo Smart Home page in the US and grouped them by what they promise; counts are ad versions, not spend. Three promises get a phone of their own below.</p></div>
+    <div class="au-duo-h"><h3>Three ads, three first launches</h3><p>Left to right: a buyer from your Early Warning System ad, from “Bath day on the patio” and from your Video Doorbell ad. Tap the steps, or tap inside any phone; the other two follow to their own version of that step.</p></div>
     <div class="au-duo-steps" id="duoSteps" aria-label="Steps, in every phone"></div>
     <div class="au-duo-ideas" id="duoIdeas" aria-label="The five ideas, in every phone"></div>
     <p class="au-duo-stepcap" id="duoStepCap"></p>
-    <div class="au-duo-tog" role="group" aria-label="Which ad"><button type="button" data-duoone="a" class=on>Ad 1 · Early Warning</button><button type="button" data-duoone="b">Ad 2 · Moments</button><button type="button" data-duoone="c">Ad 3 · Doorbell</button></div>
+    <div class="au-duo-tog" role="group" aria-label="Which ad"><button type="button" data-duoone="a" class=on>Early Warning ad</button><button type="button" data-duoone="b">“Bath day” ad</button><button type="button" data-duoone="c">Doorbell ad</button></div>
     <div class="au-duo au-n3" id="duoStage" data-one="a">
-      <div class="au-duo-ph au-duo-a"><p class="au-duo-pill"><b>Meta ad · us.arlo.com</b><span>The Arlo Secure Early Warning System sets a new standard…</span></p><div class="au-duo-fr" id="duoFra"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapa"></p><div class="au-duo-recs" id="duoReca" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-b"><p class="au-duo-pill"><b>Meta ad · us.arlo.com</b><span>Bath day on the patio, and the dog has other plans…</span></p><div class="au-duo-fr" id="duoFrb"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapb"></p><div class="au-duo-recs" id="duoRecb" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-c"><p class="au-duo-pill"><b>Meta ad · us.arlo.com</b><span>Turns out the fix wasn't WebMD…</span></p><div class="au-duo-fr" id="duoFrc"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapc"></p><div class="au-duo-recs" id="duoRecc" aria-label="Recommendations for this ad"></div></div>
+      <div class="au-duo-ph au-duo-a"><p class="au-duo-pill"><b>Meta ad</b><span>Know who’s there</span></p><div class="au-duo-fr" id="duoFra"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapa"></p><div class="au-duo-recs" id="duoReca" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-b"><p class="au-duo-pill"><b>Meta ad</b><span>Keep the moments</span></p><div class="au-duo-fr" id="duoFrb"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapb"></p><div class="au-duo-recs" id="duoRecb" aria-label="Recommendations for this ad"></div></div><div class="au-duo-ph au-duo-c"><p class="au-duo-pill"><b>Meta ad</b><span>Answer the door</span></p><div class="au-duo-fr" id="duoFrc"><div class="au-duo-ld">Loading the flow…</div></div><p class="au-duo-cap" id="duoCapc"></p><div class="au-duo-recs" id="duoRecc" aria-label="Recommendations for this ad"></div></div>
     </div>
     <p class="au-duo-hint">Tap through any phone and the others follow. A dot marks the screens that differ by ad.</p>
     <table class="au-duo-tbl" id="duoTbl"></table>
     <div class="au-duo-next"><div><b>Day 1</b><h4>Pass the campaign into Adapty</h4><p>The us.arlo.com order already carries the Meta campaign. Attach it (or the device model, for Amazon buyers) to the account as a user attribute, and it picks the setup flow at first open. No app release.</p></div><div><b>Week 1</b><h4>One flow per promise</h4><p>Early Warning, moments and the doorbell get their own first screens; product and Amazon ads open by the device being paired.</p></div><div><b>Week 2</b><h4>Judge each ad on plans, not cameras</h4><p>Each ad’s flow against today’s, measured on plans started in the free month and what each install from that ad earns, so spend follows the promise that pays.</p></div></div>
     <p class="au-adn">All three phones run the same five ideas. We found no Apple Ads for Arlo in the US between 16 October and 16 November 2026, and no Meta ad that links to the App Store. One Early Warning ad links straight to your plans page, selling the plan before there is a camera; in the app the same promise can wait until the camera is up. This layer carries no range: only a test per ad can give one.</p>
   </div>
-  <script type="application/json" id="duoData">{"flows": [{"k": "a", "ad": "a", "label": "Ad 1 · Early Warning", "chan": "Meta ad · us.arlo.com", "pill": "The Arlo Secure Early Warning System sets a new standard…", "version": "Version A · Alerts first", "recs": [{"step": "welcome", "title": "Open on the ad’s promise", "why": "<b>Try</b> “Know who’s there, and who shouldn’t be.” as the first screen, <b>because</b> this ad sells the Early Warning System itself and links to your plans page.", "impact": "+3–8%", "il": "CR"}, {"step": "ask", "title": "Let them pick the alerts", "why": "<b>Try</b> five detections with People and Packages ticked, <b>because</b> the ad promised to know who’s there and watch deliveries, and the pick names the alert that follows.", "impact": "+10–20%", "il": "CR"}, {"step": "paywall", "title": "Show what stops without a plan", "why": "<b>Try</b> a No plan vs Smart Aware table, <b>because</b> people who came for smart alerts need to see that naming a person is the plan, not the camera.", "impact": "+10–20%", "il": "CR"}]}, {"k": "b", "ad": "b", "label": "Ad 2 · Moments", "chan": "Meta ad · us.arlo.com", "pill": "Bath day on the patio, and the dog has other plans…", "version": "Version B · Clip first", "recs": [{"step": "welcome", "title": "Their moment, first", "why": "<b>Try</b> “Some moments you keep, some you share.” over the ad’s patio frame, <b>because</b> 42 of your 116 live ads sell moments, the biggest promise you run.", "impact": "+3–8%", "il": "CR"}, {"step": "value", "title": "Their first clip, saved", "why": "<b>Try</b> a saved clip titled like the ad’s “Rachel and Dog on Patio” before any price, <b>because</b> keeping clips is video history, a plan feature after the free month.", "impact": "+10–15%", "il": "CR"}, {"step": "paywall", "title": "The free month’s end date", "why": "<b>Try</b> Today and Dec 16, 2026 above the yearly plan, <b>because</b> the free month already runs and its last day is when the decision happens.", "impact": "+5–15%", "il": "CR"}]}, {"k": "c", "ad": "c", "label": "Ad 3 · Doorbell", "chan": "Meta ad · us.arlo.com", "pill": "Turns out the fix wasn't WebMD…", "version": "Version C · Door first", "recs": [{"step": "setup", "title": "Skip the device question", "why": "<b>Try</b> Video Doorbells already picked in Add Device, <b>because</b> the ad sold a doorbell and asking again costs a tap.", "impact": "+3–8%", "il": "CR"}, {"step": "value", "title": "Let the doorbell ring first", "why": "<b>Try</b> a ring with Answer and “Package detected” before the price, <b>because</b> the ad promised “Answer from anywhere” and detection is what the plan adds.", "impact": "+10–15%", "il": "CR"}, {"step": "paywall", "title": "Proof and the one-camera plan", "why": "<b>Try</b> ★ 4.2 from 433K ratings with Single Camera at $9.99 preselected, <b>because</b> a new doorbell owner may own one device, and the price should fit it.", "impact": "+10–15%", "il": "CR"}]}], "rows": [{"id": "ad", "h": "Your ad", "a": "“The Arlo Secure Early Warning System sets a new standard in proactive protection…” · links to your plans page", "b": "“Bath day on the patio, and the dog has other plans. Some moments you keep, some you share.”", "c": "“Turns out the fix wasn't WebMD. It was better home security!” · The Cure? A Better Doorbell"}, {"id": "welcome", "h": "Welcome", "a": "“Know who’s there, and who shouldn’t be.” over the Essential Solar camera.", "b": "“Some moments you keep, some you share.” over the ad’s patio frame.", "c": "“See who’s at the door. Answer from anywhere.” over the Video Doorbell."}, {"id": "setup", "h": "Add device", "a": "Cameras, already picked.", "b": "Cameras: the Essential Solar camera from the ad.", "c": "Video Doorbells, already picked: the ad sold one."}, {"id": "ask", "h": "The question", "a": "“What should Arlo tell you about?” People and Packages ticked.", "b": "“What do you want to keep?” Family moments and Pets ticked.", "c": "“Who comes to your door most?” Deliveries, Family and friends, Kids, Away a lot."}, {"id": "value", "h": "First value", "a": "A sample Motion Alert from the camera they named, with your four actions.", "b": "Their first clip saved in the Feed: “Rachel and Dog on Patio”.", "c": "The doorbell rings: “Package detected on Front Door”, Answer or Decline."}, {"id": "paywall", "h": "Paywall", "a": "No plan vs Smart Aware table; every camera monthly preselected; Single Camera and yearly below.", "b": "Their clip on top, Today → Dec 16, 2026, yearly $219.00 preselected.", "c": "★ 4.2 · 433K ratings first; Single Camera $9.99 preselected."}], "tableTitle": "The same app, answering three different ads.", "tableSub": "The five ideas sit underneath all three. Only these screens change with the ad they saw; each row opens that screen in every phone.", "steps": [{"id": "ad", "label": "The ad"}, {"sep": "Proposed"}, {"id": "welcome", "label": "Welcome", "ids": {"a": "welcome-a", "b": "welcome-b", "c": "welcome-c"}}, {"id": "setup", "label": "Add device"}, {"id": "name", "label": "Where"}, {"id": "ask", "label": "Ask", "ids": {"a": "ask-a", "b": "ask-b", "c": "ask-c"}}, {"id": "value", "label": "First value", "ids": {"a": "value-a", "b": "value-b", "c": "value-c"}}, {"id": "paywall", "label": "Paywall", "ids": {"a": "paywall-a", "b": "paywall-b", "c": "paywall-c"}}, {"id": "home", "label": "Dashboard"}], "stepCaps": {"name": "Same for every ad: where the camera hangs becomes its name in every alert, “Person detected on Driveway at 9:41AM.”", "home": "Same for every ad: the ✕ and the purchase both land on your dashboard, with the free month still running. No second paywall."}}</script>
+  <script type="application/json" id="duoData">{"flows": [{"k": "a", "ad": "a", "label": "Early Warning ad", "chan": "Meta ad", "pill": "Know who’s there", "version": "From your Early Warning System ad", "recs": [{"step": "welcome", "title": "Open on the ad’s own line", "why": "“Know who’s there, and who shouldn’t be.” as the first screen. This ad sells the Early Warning System itself and links to your plans page.", "impact": "+3–8%", "il": "CR to purchase"}, {"step": "ask", "title": "Let them pick the alerts", "why": "People, Packages, Vehicles, Animals and Fire, the first two ticked as the ad promised. The first pick names the sample alert that follows.", "impact": "+10–20%", "il": "CR to purchase"}, {"step": "paywall", "title": "Show what stops without a plan", "why": "No plan next to Smart Aware, under the day the free month ends. For someone who came for smart alerts, naming a person is the plan.", "impact": "+10–20%", "il": "CR to purchase"}]}, {"k": "b", "ad": "b", "label": "“Bath day” ad", "chan": "Meta ad", "pill": "Keep the moments", "version": "From your “Bath day on the patio” ad", "recs": [{"step": "welcome", "title": "Their moment, first", "why": "“Some moments you keep, some you share.” over the ad’s patio frame. 42 of your 116 live ads sell moments, the biggest promise you run.", "impact": "+3–8%", "il": "CR to purchase"}, {"step": "value", "title": "Their first clip, saved", "why": "A clip titled like the ad’s “Rachel and Dog on Patio”, saved in the Feed before any price. Keeping clips needs a plan after the free month.", "impact": "+10–15%", "il": "CR to purchase"}, {"step": "paywall", "title": "Show the day the free month ends", "why": "Today and Dec 16, 2026 above the yearly plan. The month already runs, and its last day is when they decide to keep their clips.", "impact": "+5–15%", "il": "CR to purchase"}]}, {"k": "c", "ad": "c", "label": "Doorbell ad", "chan": "Meta ad", "pill": "Answer the door", "version": "From your Video Doorbell ad", "recs": [{"step": "setup", "title": "The doorbell already picked", "why": "Video Doorbells is picked in Add Device. The ad sold a doorbell, so asking again only costs a tap.", "impact": "+3–8%", "il": "CR to purchase"}, {"step": "value", "title": "Let the doorbell ring first", "why": "A ring with Answer and “Package detected on Front Door” before the price. The ad promised “Answer from anywhere”; package detection is what the plan adds.", "impact": "+10–15%", "il": "CR to purchase"}, {"step": "paywall", "title": "Proof first, one camera first", "why": "★ 4.2 from 433K ratings above the plans, Single Camera at $9.99 a month preselected. A new doorbell owner may own one device.", "impact": "+10–15%", "il": "CR to purchase"}]}], "rows": [{"id": "ad", "h": "Where they came from", "a": "Your Early Warning System video, linking to your plans page. Tap Shop Now.", "b": "“Bath day on the patio”, your most-run promise, linking to the Essential Solar camera. Tap See Details.", "c": "“Turns out the fix wasn't WebMD”, linking to video doorbells. Tap Shop Now."}, {"id": "welcome", "h": "Arrive", "a": "“Know who’s there, and who shouldn’t be.” over the Essential Solar camera.", "b": "“Some moments you keep, some you share.” over the ad’s patio frame.", "c": "“See who’s at the door. Answer from anywhere.” over the Video Doorbell."}, {"id": "setup", "h": "Add device", "a": "Cameras, already picked.", "b": "Cameras: the Essential Solar camera from the ad.", "c": "Video Doorbells, already picked: the ad sold one."}, {"id": "ask", "h": "One question", "a": "“What should Arlo tell you about?” People and Packages ticked.", "b": "“What do you want to keep?” Family moments and Pets ticked.", "c": "“Who comes to your door most?” Deliveries, family and friends, kids, away a lot."}, {"id": "value", "h": "First win", "a": "A sample Motion Alert from the camera they named, with your four actions.", "b": "Their first clip saved in the Feed: “Rachel and Dog on Patio”.", "c": "The doorbell rings: “Package detected on Front Door”, Answer or Decline."}, {"id": "paywall", "h": "Paywall", "a": "What stops without a plan, then every camera monthly first, Single Camera and the year below.", "b": "Their clip on top, Today and Dec 16, 2026, the year at $219.00 first.", "c": "★ 4.2 from 433K ratings first, Single Camera at $9.99 preselected."}], "tableTitle": "The same app, answering three different ads.", "tableSub": "The five ideas sit underneath all three. These screens change with the ad they saw; each row opens that step in every phone.", "steps": [{"id": "ad", "label": "The ad"}, {"id": "welcome", "label": "Arrive", "ids": {"a": "welcome-a", "b": "welcome-b", "c": "welcome-c"}}, {"id": "setup", "label": "Add device"}, {"id": "name", "label": "Where"}, {"id": "ask", "label": "One question", "ids": {"a": "ask-a", "b": "ask-b", "c": "ask-c"}}, {"id": "value", "label": "First win", "ids": {"a": "value-a", "b": "value-b", "c": "value-c"}}, {"id": "paywall", "label": "Paywall", "ids": {"a": "paywall-a", "b": "paywall-b", "c": "paywall-c"}}, {"id": "home", "label": "In the app"}], "stepCaps": {"name": "Same for every ad: where the camera hangs becomes its name in every alert, “Person detected on Driveway at 9:41AM.”", "home": "Your dashboard, with the free month still running. The paywall’s ✕ lands here too, never on a second paywall."}, "stepLine": {"ad": "<b>Step 1.</b> Your Early Warning System ad on the left, “Bath day on the patio” in the middle, the Video Doorbell on the right. Today each opens us.arlo.com.", "welcome": "<b>Step 2. Proposed:</b> once the camera is home, the app’s first screen repeats the ad’s own line.", "setup": "<b>Step 3. Proposed:</b> your Add Device step, with the device from the ad already picked.", "name": "<b>Step 4. Proposed:</b> where it hangs becomes its name in every alert.", "ask": "<b>Step 5. Proposed:</b> one question, a different one per ad: the alerts, the moments, the door.", "value": "<b>Step 6. Proposed:</b> a first win before any price: a smart alert, a saved clip, the doorbell ringing.", "paywall": "<b>Step 7. Proposed:</b> the plan offered as the free month starts, at your App Store prices. The ✕ closes into the app.", "home": "<b>Step 8.</b> Your dashboard, with the free month running and their camera on it."}}</script>
 </section>
 
 <section class="au-sec au-white" id="prototype">
@@ -1106,7 +1121,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
       <h2 class="au-h2">Every idea, inside your own onboarding.</h2>
       <p>Tap through it like a new user, or jump straight to an idea. Green numbers mark the screens that carry one.</p>
     </div>
-    <div class="au-langrow"><span>The ad they saw</span><div class="au-lsw" role="group" aria-label="The ad they saw"><button type="button" data-pick="ad:a">Ad 1 · Early Warning</button><button type="button" data-pick="ad:b">Ad 2 · Moments</button><button type="button" data-pick="ad:c">Ad 3 · Doorbell</button></div></div>
+    <div class="au-langrow"><span>The ad they saw</span><div class="au-lsw" role="group" aria-label="The ad they saw"><button type="button" data-pick="ad:a">Early Warning ad</button><button type="button" data-pick="ad:b">“Bath day” ad</button><button type="button" data-pick="ad:c">Doorbell ad</button></div></div>
     <div class="au-langrow" id="langRow" hidden><span>Prototype language</span><div class="au-lsw" id="langSw" role="group" aria-label="Prototype language"></div></div>
     <div class="au-seg" id="chips" role="tablist" aria-label="Screens"></div>
     <div class="au-stage">
@@ -1132,7 +1147,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
         <b data-show="ad:a">Protection That's A Step Ahead</b><b data-show="ad:b">True Privacy. Yours to Keep.</b><b data-show="ad:c">The Cure? A Better Doorbell</b></div>
       <button class="ar-fbb" data-go="next"><span data-show="ad:a">Shop Now</span><span data-show="ad:b">See Details</span><span data-show="ad:c">Shop Now</span></button>
     </div>
-    <p class="ar-fbn">Today this ad opens us.arlo.com. After the camera arrives, the Arlo Secure app is where the plan is chosen: here it opens on this ad.</p>
+    <p data-t="ad_note" class="ar-fbn">Today this ad opens us.arlo.com. After the camera arrives, the Arlo Secure app is where the plan is chosen: here it opens on this ad.</p>
   </div>
 </section>
 
@@ -1141,9 +1156,9 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
     <img class="ar-logo" src="assets/brand/logo.svg" alt="Arlo">
     <div class="ar-art"><img src="assets/site/solar-cam.png" alt=""></div>
     <p class="ar-k">Arlo Secure · Early Warning System</p>
-    <h1 class="ar-h" data-hl="a1">Know who’s there, and who shouldn’t be.</h1>
-    <p class="ar-sub">Set up your camera and pick the alerts that matter. Your free month of Arlo Secure starts when setup is done.</p>
-    <div class="ar-foot"><button class="ar-cta" data-go="next">Get Started</button><button class="ar-link" data-go="next">Log In</button></div>
+    <h1 data-t="wa_h" class="ar-h" data-hl="a1">Know who’s there, and who shouldn’t be.</h1>
+    <p data-t="wa_s" class="ar-sub">Set up your camera and pick the alerts that matter. Your free month of Arlo Secure starts when setup is done.</p>
+    <div class="ar-foot"><button data-t="get" class="ar-cta" data-go="next">Get Started</button><button data-t="login" class="ar-link" data-go="next">Log In</button></div>
   </div>
 </section>
 
@@ -1152,9 +1167,9 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
     <img class="ar-logo" src="assets/brand/logo.svg" alt="Arlo">
     <div class="ar-art ar-art-photo"><img src="assets/crop/patio.jpg" alt=""></div>
     <p class="ar-k">Essential Solar Security Camera</p>
-    <h1 class="ar-h" data-hl="b1">Some moments you keep, some you share.</h1>
-    <p class="ar-sub">Set up your camera and keep the clips that matter. Your free month of Arlo Secure starts when setup is done.</p>
-    <div class="ar-foot"><button class="ar-cta" data-go="next">Get Started</button><button class="ar-link" data-go="next">Log In</button></div>
+    <h1 data-t="wb_h" class="ar-h" data-hl="b1">Some moments you keep, some you share.</h1>
+    <p data-t="wb_s" class="ar-sub">Set up your camera and keep the clips that matter. Your free month of Arlo Secure starts when setup is done.</p>
+    <div class="ar-foot"><button data-t="get" class="ar-cta" data-go="next">Get Started</button><button data-t="login" class="ar-link" data-go="next">Log In</button></div>
   </div>
 </section>
 
@@ -1163,134 +1178,134 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
     <img class="ar-logo" src="assets/brand/logo.svg" alt="Arlo">
     <div class="ar-art"><img src="assets/site/doorbell.png" alt=""></div>
     <p class="ar-k">Arlo Video Doorbell</p>
-    <h1 class="ar-h">See who’s at the door. Answer from anywhere.</h1>
-    <p class="ar-sub">Stress free setup in a few steps. Your free month of Arlo Secure starts when setup is done.</p>
-    <div class="ar-foot"><button class="ar-cta" data-go="next">Get Started</button><button class="ar-link" data-go="next">Log In</button></div>
+    <h1 data-t="wc_h" class="ar-h">See who’s at the door. Answer from anywhere.</h1>
+    <p data-t="wc_s" class="ar-sub">Stress free setup in a few steps. Your free month of Arlo Secure starts when setup is done.</p>
+    <div class="ar-foot"><button data-t="get" class="ar-cta" data-go="next">Get Started</button><button data-t="login" class="ar-link" data-go="next">Log In</button></div>
   </div>
 </section>
 
 <section class="scr" data-id="setup">
-  <div class="ar-nav"><button class="ar-bk" data-back aria-label="Back">‹</button><b>Add Device</b><span></span></div>
+  <div class="ar-nav"><button class="ar-bk" data-back aria-label="Back">‹</button><b data-t="nav_add">Add Device</b><span></span></div>
   <div class="ar-body ar-body-nav">
-    <h1 class="ar-h2">What are you setting up?</h1>
+    <h1 data-t="setup_h" class="ar-h2">What are you setting up?</h1>
     <div class="ar-grid" data-hl="c1">
-      <button class="ar-dev" data-pick="dev:cam"><img src="assets/site/solar-cam.png" alt=""><span>Cameras</span></button>
-      <button class="ar-dev" data-pick="dev:bell"><img src="assets/site/doorbell.png" alt=""><span>Video Doorbells</span></button>
-      <button class="ar-dev" data-pick="dev:flood"><i class="ar-gl">◐</i><span>Floodlights</span></button>
-      <button class="ar-dev" data-pick="dev:sys"><i class="ar-gl">⌂</i><span>Security System</span></button>
+      <button class="ar-dev" data-pick="dev:cam"><img src="assets/site/solar-cam.png" alt=""><span data-t="dev_cam">Cameras</span></button>
+      <button class="ar-dev" data-pick="dev:bell"><img src="assets/site/doorbell.png" alt=""><span data-t="dev_bell">Video Doorbells</span></button>
+      <button class="ar-dev" data-pick="dev:flood"><i class="ar-gl">◐</i><span data-t="dev_flood">Floodlights</span></button>
+      <button class="ar-dev" data-pick="dev:sys"><i class="ar-gl">⌂</i><span data-t="dev_sys">Security System</span></button>
     </div>
-    <p class="ar-note" data-show="dev:cam">Essential Solar Security Camera, the one in your ad, is picked for you.</p>
-    <p class="ar-note" data-show="dev:bell">Video Doorbell, the one in your ad, is picked for you.</p>
-    <p class="ar-note" data-show="dev:flood">Floodlight cameras.</p>
-    <p class="ar-note" data-show="dev:sys">Arlo Home Security System.</p>
-    <div class="ar-foot"><button class="ar-cta" data-go="next">Continue</button></div>
+    <p class="ar-note" data-show="dev:cam"><span data-t="note_cam">Essential Solar Security Camera, the one in your ad, is picked for you.</span></p>
+    <p class="ar-note" data-show="dev:bell"><span data-t="note_bell">Video Doorbell, the one in your ad, is picked for you.</span></p>
+    <p class="ar-note" data-show="dev:flood"><span data-t="note_flood">Floodlight cameras.</span></p>
+    <p class="ar-note" data-show="dev:sys"><span data-t="note_sys">Arlo Home Security System.</span></p>
+    <div class="ar-foot"><button data-t="cont" class="ar-cta" data-go="next">Continue</button></div>
   </div>
 </section>
 
 <section class="scr" data-id="name">
-  <div class="ar-nav"><button class="ar-bk" data-back aria-label="Back">‹</button><b>Add Device</b><span></span></div>
+  <div class="ar-nav"><button class="ar-bk" data-back aria-label="Back">‹</button><b data-t="nav_add">Add Device</b><span></span></div>
   <div class="ar-body ar-body-nav">
-    <div class="ar-ok"><i>✓</i><div><b><span data-show="dev:bell">Video Doorbell</span><span data-show="dev:cam">Camera</span><span data-show="dev:flood">Floodlight</span><span data-show="dev:sys">System</span> connected</b><small>QR code scanned · Wi-Fi connected</small></div></div>
-    <h1 class="ar-h2">Where is it?</h1>
-    <p class="ar-sub">We use the name in your alerts.</p>
+    <div class="ar-ok"><i>✓</i><div><b><span data-show="dev:bell"><span data-t="ok_bell">Video Doorbell connected</span></span><span data-show="dev:cam"><span data-t="ok_cam">Camera connected</span></span><span data-show="dev:flood"><span data-t="ok_flood">Floodlight connected</span></span><span data-show="dev:sys"><span data-t="ok_sys">System connected</span></span></b><small data-t="ok_s">QR code scanned · Wi-Fi connected</small></div></div>
+    <h1 data-t="name_h" class="ar-h2">Where is it?</h1>
+    <p data-t="name_s" class="ar-sub">We use the name in your alerts.</p>
     <div class="ar-chips">
-      <button data-pick="where:fd">Front Door</button><button data-pick="where:dw">Driveway</button><button data-pick="where:by">Backyard</button>
-      <button data-pick="where:pt">Patio</button><button data-pick="where:gr">Garage</button><button data-pick="where:lr">Living Room</button>
+      <button data-pick="where:fd"><span data-t="w_fd">Front Door</span></button><button data-pick="where:dw"><span data-t="w_dw">Driveway</span></button><button data-pick="where:by"><span data-t="w_by">Backyard</span></button>
+      <button data-pick="where:pt"><span data-t="w_pt">Patio</span></button><button data-pick="where:gr"><span data-t="w_gr">Garage</span></button><button data-pick="where:lr"><span data-t="w_lr">Living Room</span></button>
     </div>
-    <div class="ar-prev"><small>Your alerts will read</small><b>Person detected on <span data-bind="label:where"></span> at 9:41AM.</b></div>
-    <div class="ar-foot"><button class="ar-cta" data-go="next">Continue</button></div>
+    <div class="ar-prev"><small data-t="prev_k">Your alerts will read</small><b data-t="prev_b">Person detected on <span data-bind="label:where"></span> at 9:41AM.</b></div>
+    <div class="ar-foot"><button data-t="cont" class="ar-cta" data-go="next">Continue</button></div>
   </div>
 </section>
 
 <section class="scr" data-id="ask-a" data-ad="a">
-  <div class="ar-nav"><button class="ar-bk" data-back aria-label="Back">‹</button><b>Smart Alerts</b><span></span></div>
+  <div class="ar-nav"><button class="ar-bk" data-back aria-label="Back">‹</button><b data-t="nav_sa">Smart Alerts</b><span></span></div>
   <div class="ar-body ar-body-nav">
-    <h1 class="ar-h2">What should Arlo tell you about?</h1>
-    <p class="ar-sub">Your free month includes all of them. We turn on the ones you pick first.</p>
+    <h1 data-t="aska_h" class="ar-h2">What should Arlo tell you about?</h1>
+    <p data-t="aska_s" class="ar-sub">Your free month includes all of them. We turn on the ones you pick first.</p>
     <div class="ar-rows" data-hl="1 a2">
-      <button class="ar-row" data-toggle="watch:people"><i class="ar-ri">◉</i><span>People<small>“Person detected on <span data-bind="label:where"></span>”</small></span><em></em></button>
-      <button class="ar-row" data-toggle="watch:packages"><i class="ar-ri">▣</i><span>Packages<small>Keep an eye on deliveries</small></span><em></em></button>
-      <button class="ar-row" data-toggle="watch:vehicles"><i class="ar-ri">◆</i><span>Vehicles<small>Family car or a surprise visitor</small></span><em></em></button>
-      <button class="ar-row" data-toggle="watch:animals"><i class="ar-ri">◍</i><span>Animals<small>The dog, or the occasional bear</small></span><em></em></button>
-      <button class="ar-row" data-toggle="watch:fire"><i class="ar-ri">▲</i><span>Fire<small>Spot danger before it spreads</small></span><em></em></button>
+      <button class="ar-row" data-toggle="watch:people"><i class="ar-ri">◉</i><span data-t="aska_p">People<small>“Person detected on <span data-bind="label:where"></span>”</small></span><em></em></button>
+      <button class="ar-row" data-toggle="watch:packages"><i class="ar-ri">▣</i><span data-t="aska_k">Packages<small>Keep an eye on deliveries</small></span><em></em></button>
+      <button class="ar-row" data-toggle="watch:vehicles"><i class="ar-ri">◆</i><span data-t="aska_v">Vehicles<small>Family car or a surprise visitor</small></span><em></em></button>
+      <button class="ar-row" data-toggle="watch:animals"><i class="ar-ri">◍</i><span data-t="aska_a">Animals<small>The dog, or the occasional bear</small></span><em></em></button>
+      <button class="ar-row" data-toggle="watch:fire"><i class="ar-ri">▲</i><span data-t="aska_f">Fire<small>Spot danger before it spreads</small></span><em></em></button>
     </div>
-    <div class="ar-foot"><button class="ar-cta" data-go="next" data-requires="watch">Turn on <span data-bind="count:watch"></span> alerts</button></div>
+    <div class="ar-foot"><button data-t="aska_cta" class="ar-cta" data-go="next" data-requires="watch">Turn on <span data-bind="count:watch"></span> alerts</button></div>
   </div>
 </section>
 
 <section class="scr" data-id="ask-b" data-ad="b">
-  <div class="ar-nav"><button class="ar-bk" data-back aria-label="Back">‹</button><b>Video History</b><span></span></div>
+  <div class="ar-nav"><button class="ar-bk" data-back aria-label="Back">‹</button><b data-t="nav_vh">Video History</b><span></span></div>
   <div class="ar-body ar-body-nav">
-    <h1 class="ar-h2">What do you want to keep?</h1>
-    <p class="ar-sub">Your free month keeps every clip. We pin the moments you pick to the top of your Feed.</p>
+    <h1 data-t="askb_h" class="ar-h2">What do you want to keep?</h1>
+    <p data-t="askb_s" class="ar-sub">Your free month keeps every clip. We pin the moments you pick to the top of your Feed.</p>
     <div class="ar-tiles" data-hl="1">
-      <button class="ar-tile" data-toggle="keep:family"><i>♡</i><b>Family moments</b><small>Hellos and homecomings</small></button>
-      <button class="ar-tile" data-toggle="keep:pets"><i>◍</i><b>Pets</b><small>Bath day, and other plans</small></button>
-      <button class="ar-tile" data-toggle="keep:visitors"><i>◉</i><b>Visitors</b><small>Expected or not</small></button>
-      <button class="ar-tile" data-toggle="keep:deliveries"><i>▣</i><b>Deliveries</b><small>Every package, on video</small></button>
+      <button class="ar-tile" data-toggle="keep:family"><i>♡</i><b data-t="askb_fam">Family moments</b><small data-t="askb_fams">Hellos and homecomings</small></button>
+      <button class="ar-tile" data-toggle="keep:pets"><i>◍</i><b data-t="askb_pet">Pets</b><small data-t="askb_pets">Bath day, and other plans</small></button>
+      <button class="ar-tile" data-toggle="keep:visitors"><i>◉</i><b data-t="askb_vis">Visitors</b><small data-t="askb_viss">Expected or not</small></button>
+      <button class="ar-tile" data-toggle="keep:deliveries"><i>▣</i><b data-t="askb_del">Deliveries</b><small data-t="askb_dels">Every package, on video</small></button>
     </div>
-    <div class="ar-foot"><button class="ar-cta" data-go="next" data-requires="keep">Continue</button></div>
+    <div class="ar-foot"><button class="ar-cta" data-go="next" data-requires="keep" data-t="cont">Continue</button></div>
   </div>
 </section>
 
 <section class="scr" data-id="ask-c" data-ad="c">
-  <div class="ar-nav"><button class="ar-bk" data-back aria-label="Back">‹</button><b>Video Doorbell</b><span></span></div>
+  <div class="ar-nav"><button class="ar-bk" data-back aria-label="Back">‹</button><b data-t="nav_vd">Video Doorbell</b><span></span></div>
   <div class="ar-body ar-body-nav">
-    <h1 class="ar-h2">Who comes to your door most?</h1>
-    <p class="ar-sub">We set your doorbell alerts around it.</p>
+    <h1 data-t="askc_h" class="ar-h2">Who comes to your door most?</h1>
+    <p data-t="askc_s" class="ar-sub">We set your doorbell alerts around it.</p>
     <div class="ar-rows" data-hl="1">
-      <button class="ar-row ar-one" data-pick="door:del" data-advance="next"><i class="ar-ri">▣</i><span>Deliveries<small>Package detected at the door</small></span><em></em></button>
-      <button class="ar-row ar-one" data-pick="door:fam" data-advance="next"><i class="ar-ri">♡</i><span>Family and friends<small>Know who it is before you open</small></span><em></em></button>
-      <button class="ar-row ar-one" data-pick="door:kids" data-advance="next"><i class="ar-ri">◉</i><span>Kids coming home<small>See them get home safe</small></span><em></em></button>
-      <button class="ar-row ar-one" data-pick="door:away" data-advance="next"><i class="ar-ri">◆</i><span>I’m away a lot<small>Answer from anywhere</small></span><em></em></button>
+      <button class="ar-row ar-one" data-pick="door:del" data-advance="next"><i class="ar-ri">▣</i><span data-t="askc_del">Deliveries<small>Package detected at the door</small></span><em></em></button>
+      <button class="ar-row ar-one" data-pick="door:fam" data-advance="next"><i class="ar-ri">♡</i><span data-t="askc_fam">Family and friends<small>Know who it is before you open</small></span><em></em></button>
+      <button class="ar-row ar-one" data-pick="door:kids" data-advance="next"><i class="ar-ri">◉</i><span data-t="askc_kids">Kids coming home<small>See them get home safe</small></span><em></em></button>
+      <button class="ar-row ar-one" data-pick="door:away" data-advance="next"><i class="ar-ri">◆</i><span data-t="askc_away">I’m away a lot<small>Answer from anywhere</small></span><em></em></button>
     </div>
   </div>
 </section>
 
 <section class="scr ar-lock" data-id="value-a" data-ad="a">
   <div class="ar-lk">
-    <p class="ar-lkt">Sample alert · your free month</p>
+    <p data-t="va_k" class="ar-lkt">Sample alert · your free month</p>
     <p class="ar-clock">9:41</p>
     <div class="ar-noti" data-hl="2">
-      <div class="ar-noh"><img src="assets/brand/appstore-icon.jpg" alt=""><div><b>Motion Alert</b><small><span data-bind="alertA"></span></small></div><em>now</em></div>
+      <div class="ar-noh"><img src="assets/brand/appstore-icon.jpg" alt=""><div><b data-t="va_alert">Motion Alert</b><small><span data-bind="alertA"></span></small></div><em data-t="va_now">now</em></div>
       <div class="ar-noimg"><img src="assets/crop/frontdoor.jpg" alt=""><span>▶</span></div>
     </div>
     <div class="ar-acts">
-      <span>Mute Notifications</span><span>Activate Siren</span><span>Call a Friend</span><span>Emergency Response</span>
+      <span data-t="act1">Mute Notifications</span><span data-t="act2">Activate Siren</span><span data-t="act3">Call a Friend</span><span data-t="act4">Emergency Response</span>
     </div>
-    <div class="ar-foot"><p class="ar-lkn">Without a plan after your free month, this alert can’t name a person.</p><button class="ar-cta ar-cta-w" data-go="next">Continue</button></div>
+    <div class="ar-foot"><p data-t="va_n" class="ar-lkn">Without a plan after your free month, this alert can’t name a person.</p><button data-t="cont_w" class="ar-cta ar-cta-w" data-go="next">Continue</button></div>
   </div>
 </section>
 
 <section class="scr" data-id="value-b" data-ad="b">
-  <div class="ar-nav"><span class="ar-ico">◎</span><b>My Home ⌄</b><span class="ar-ico">▦</span></div>
+  <div class="ar-nav"><span class="ar-ico">◎</span><b data-t="nav_home">My Home ⌄</b><span class="ar-ico">▦</span></div>
   <div class="ar-body ar-body-nav">
-    <p class="ar-day">Today, November 16</p>
+    <p data-t="vb_day" class="ar-day">Today, November 16</p>
     <div class="ar-clip" data-hl="2 b2">
       <img src="assets/crop/patio.jpg" alt="">
-      <span class="ar-saved">✓ Saved</span>
-      <div class="ar-clipbar"><b>Rachel and Dog on Patio</b><small>Saturday, October 4 · 2:35 PM</small><i><s></s></i></div>
+      <span data-t="vb_saved" class="ar-saved">✓ Saved</span>
+      <div class="ar-clipbar"><b>Rachel and Dog on Patio</b><small data-t="vb_date">Saturday, October 4 · 2:35 PM</small><i><s></s></i></div>
     </div>
-    <div class="ar-clipacts"><span>⤓ Save</span><span>⇪ Share</span><span>☆ Favorite</span></div>
+    <div class="ar-clipacts"><span data-t="vb_save">⤓ Save</span><span data-t="vb_share">⇪ Share</span><span data-t="vb_fav">☆ Favorite</span></div>
     <div class="ar-feed">
-      <div class="ar-fr"><div><small>2:35 PM</small><b>Animal</b><small><span data-bind="label:where"></span> Camera | 0:10</small></div><img src="assets/crop/patio.jpg" alt=""></div>
-      <div class="ar-fr"><div><small>1:12 PM</small><b>Person</b><small><span data-bind="label:where"></span> Camera | 0:08</small></div><img src="assets/crop/driveway.jpg" alt=""></div>
+      <div class="ar-fr"><div><small data-t="vb_t1">2:35 PM</small><b data-t="vb_an">Animal</b><small data-t="vb_c1"><span data-bind="label:where"></span> Camera | 0:10</small></div><img src="assets/crop/patio.jpg" alt=""></div>
+      <div class="ar-fr"><div><small data-t="vb_t2">1:12 PM</small><b data-t="vb_pe">Person</b><small data-t="vb_c2"><span data-bind="label:where"></span> Camera | 0:08</small></div><img src="assets/crop/driveway.jpg" alt=""></div>
     </div>
-    <div class="ar-foot"><p class="ar-sub ar-c">Your first clip is saved. Arlo Secure keeps clips for 60 days.</p><button class="ar-cta" data-go="next">Continue</button></div>
+    <div class="ar-foot"><p data-t="vb_n" class="ar-sub ar-c">Your first clip is saved. Arlo Secure keeps clips for 60 days.</p><button data-t="cont" class="ar-cta" data-go="next">Continue</button></div>
   </div>
 </section>
 
 <section class="scr ar-call" data-id="value-c" data-ad="c">
   <div class="ar-callimg"><img src="assets/crop/frontdoor.jpg" alt=""></div>
   <div class="ar-callb" data-hl="2 c2">
-    <span class="ar-det" data-show="door:del">▣ Package detected on Front Door</span>
-    <span class="ar-det" data-show="door:fam">◉ Person detected on Front Door</span>
-    <span class="ar-det" data-show="door:kids">◉ Person detected on Front Door</span>
-    <span class="ar-det" data-show="door:away">◉ Person detected on Front Door</span>
-    <b class="ar-callt">Front Door</b>
-    <small>Video Doorbell is ringing</small>
-    <div class="ar-callbtns"><button class="ar-dec" data-go="next"><i>✕</i>Decline</button><button class="ar-acc" data-go="next"><i>✆</i>Answer</button></div>
-    <p class="ar-lkn">Sample call. Answer from anywhere, then keep the clip.</p>
+    <span class="ar-det" data-show="door:del"><span data-t="vc_pkg">▣ Package detected on Front Door</span></span>
+    <span class="ar-det" data-show="door:fam"><span data-t="vc_per">◉ Person detected on Front Door</span></span>
+    <span class="ar-det" data-show="door:kids"><span data-t="vc_per">◉ Person detected on Front Door</span></span>
+    <span class="ar-det" data-show="door:away"><span data-t="vc_per">◉ Person detected on Front Door</span></span>
+    <b data-t="w_fd" class="ar-callt">Front Door</b>
+    <small data-t="vc_ring">Video Doorbell is ringing</small>
+    <div class="ar-callbtns"><button data-t="vc_dec" class="ar-dec" data-go="next"><i>✕</i>Decline</button><button data-t="vc_acc" class="ar-acc" data-go="next"><i>✆</i>Answer</button></div>
+    <p data-t="vc_n" class="ar-lkn">Sample call. Answer from anywhere, then keep the clip.</p>
   </div>
 </section>
 
@@ -1298,75 +1313,75 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
   <button class="ar-x" data-go="next" aria-label="Close">✕</button>
   <div class="ar-body ar-pwb">
     <p class="ar-k">Arlo Secure · Smart Aware</p>
-    <h1 class="ar-h ar-hs">Keep the alerts that know the difference.</h1>
-    <p class="ar-sub">Your free month ends Dec 16, 2026. After it, without a plan:</p>
+    <h1 data-t="pa_h" class="ar-h ar-hs">Keep the alerts that know the difference.</h1>
+    <p data-t="pa_s" class="ar-sub">Your free month ends Dec 16, 2026. After it, without a plan:</p>
     <div class="ar-cmp" data-hl="a3">
-      <div class="ar-cmh"><span></span><b>No plan</b><b>Smart Aware</b></div>
-      <div><span>“Person detected on <span data-bind="label:where"></span>”</span><i>—</i><em>✓</em></div>
-      <div><span>Packages, vehicles, animals</span><i>—</i><em>✓</em></div>
-      <div><span>Fire detection</span><i>—</i><em>✓</em></div>
-      <div><span>60-day video history</span><i>—</i><em>✓</em></div>
+      <div class="ar-cmh"><span></span><b data-t="pa_no">No plan</b><b>Smart Aware</b></div>
+      <div><span data-t="pa_r1">“Person detected on <span data-bind="label:where"></span>”</span><i>—</i><em>✓</em></div>
+      <div><span data-t="pa_r2">Packages, vehicles, animals</span><i>—</i><em>✓</em></div>
+      <div><span data-t="pa_r3">Fire detection</span><i>—</i><em>✓</em></div>
+      <div><span data-t="pa_r4">60-day video history</span><i>—</i><em>✓</em></div>
     </div>
     <div class="ar-plans" data-hl="4">
-      <button class="ar-plan" data-pick="plan:um"><span><b>Every camera · Monthly</b><small>Smart Aware</small></span><strong>$19.99<small>/mo</small></strong></button>
-      <button class="ar-plan" data-pick="plan:uy"><span><b>Every camera · Yearly</b><small>$219.00 a year · $18.25/mo</small></span><strong class="ar-sv">Save $20.88</strong></button>
-      <button class="ar-plan" data-pick="plan:s1"><span><b>Single Camera</b><small>Smart Aware Single</small></span><strong>$9.99<small>/mo</small></strong></button>
+      <button class="ar-plan" data-pick="plan:um"><span><b data-t="pa_um">Every camera · Monthly</b><small>Smart Aware</small></span><strong>$19.99<small data-t="per_mo">/mo</small></strong></button>
+      <button class="ar-plan" data-pick="plan:uy"><span><b data-t="pa_uy">Every camera · Yearly</b><small data-t="yr_sub">$219.00 a year · $18.25/mo</small></span><strong data-t="save" class="ar-sv">Save $20.88</strong></button>
+      <button class="ar-plan" data-pick="plan:s1"><span><b data-t="single">Single Camera</b><small>Smart Aware Single</small></span><strong>$9.99<small data-t="per_mo">/mo</small></strong></button>
     </div>
-    <button class="ar-cta" data-go="next">Keep my smart alerts</button>
-    <div class="ar-legal"><span>Terms</span><span>Privacy</span><span>Restore</span></div>
+    <button data-t="pa_cta" class="ar-cta" data-go="next">Keep my smart alerts</button>
+    <div class="ar-legal"><span data-t="terms">Terms</span><span data-t="privacy">Privacy</span><span data-t="restore">Restore</span></div>
   </div>
 </section>
 
 <section class="scr ar-pw" data-id="paywall-b" data-ad="b">
   <button class="ar-x ar-x-w" data-go="next" aria-label="Close">✕</button>
-  <div class="ar-pwhero"><img src="assets/crop/patio.jpg" alt=""><span class="ar-saved">✓ Rachel and Dog on Patio · saved</span></div>
+  <div class="ar-pwhero"><img src="assets/crop/patio.jpg" alt=""><span data-t="pb_saved" class="ar-saved">✓ Rachel and Dog on Patio · saved</span></div>
   <div class="ar-body ar-pwb ar-pwb-h">
-    <h1 class="ar-h ar-hs">Keep every moment for 60 days.</h1>
+    <h1 data-t="pb_h" class="ar-h ar-hs">Keep every moment for 60 days.</h1>
     <div class="ar-tl" data-hl="3 b3">
-      <div><i></i><span><b>Today</b><small>Setup done. Your free month of Arlo Secure starts.</small></span></div>
-      <div><i></i><span><b>Dec 16, 2026</b><small>Your free month ends. Smart Aware keeps your clips.</small></span></div>
+      <div><i></i><span><b data-t="pb_t1">Today</b><small data-t="pb_t1s">Setup done. Your free month of Arlo Secure starts.</small></span></div>
+      <div><i></i><span><b data-t="pb_t2">Dec 16, 2026</b><small data-t="pb_t2s">Your free month ends. Smart Aware keeps your clips.</small></span></div>
     </div>
     <div class="ar-plans">
-      <button class="ar-plan" data-pick="plan:uy"><span><b>Yearly</b><small>$219.00 a year · $18.25/mo</small></span><strong class="ar-sv">Save $20.88</strong></button>
-      <button class="ar-plan" data-pick="plan:um"><span><b>Monthly</b><small>Every camera</small></span><strong>$19.99<small>/mo</small></strong></button>
+      <button class="ar-plan" data-pick="plan:uy"><span><b data-t="pb_y">Yearly</b><small data-t="yr_sub">$219.00 a year · $18.25/mo</small></span><strong data-t="save" class="ar-sv">Save $20.88</strong></button>
+      <button class="ar-plan" data-pick="plan:um"><span><b data-t="pb_m">Monthly</b><small data-t="pb_mc">Every camera</small></span><strong>$19.99<small data-t="per_mo">/mo</small></strong></button>
     </div>
-    <button class="ar-cta" data-go="next">Keep my clips</button>
-    <div class="ar-legal"><span>Terms</span><span>Privacy</span><span>Restore</span></div>
+    <button data-t="pb_cta" class="ar-cta" data-go="next">Keep my clips</button>
+    <div class="ar-legal"><span data-t="terms">Terms</span><span data-t="privacy">Privacy</span><span data-t="restore">Restore</span></div>
   </div>
 </section>
 
 <section class="scr ar-pw" data-id="paywall-c" data-ad="c">
   <button class="ar-x" data-go="next" aria-label="Close">✕</button>
   <div class="ar-body ar-pwb ar-pwb-p">
-    <div class="ar-proof" data-hl="5 c3"><span class="ar-stars">★★★★<i>★</i></span><b>4.2 · 433K ratings on the App Store</b><small>Smarter. Safer. Trusted by millions.</small></div>
-    <h1 class="ar-h ar-hs">Know who’s at the door, every time.</h1>
+    <div class="ar-proof" data-hl="5 c3"><span class="ar-stars">★★★★<i>★</i></span><b data-t="pc_rating">4.2 · 433K ratings on the App Store</b><small data-t="pc_line">Smarter. Safer. Trusted by millions.</small></div>
+    <h1 data-t="pc_h" class="ar-h ar-hs">Know who’s at the door, every time.</h1>
     <ul class="ar-ben">
-      <li><b>Package and person detection</b> at your Front Door</li>
-      <li><b>60-day video history</b> of every ring</li>
-      <li><b>Interactive notifications</b> from your lock screen</li>
+      <li data-t="pc_b1"><b>Package and person detection</b> at your Front Door</li>
+      <li data-t="pc_b2"><b>60-day video history</b> of every ring</li>
+      <li data-t="pc_b3"><b>Interactive notifications</b> from your lock screen</li>
     </ul>
     <div class="ar-plans">
-      <button class="ar-plan" data-pick="plan:s1"><span><b>Single Camera</b><small>Smart Aware Single</small></span><strong>$9.99<small>/mo</small></strong></button>
-      <button class="ar-plan" data-pick="plan:um"><span><b>Every camera</b><small>Smart Aware · add more later</small></span><strong>$19.99<small>/mo</small></strong></button>
+      <button class="ar-plan" data-pick="plan:s1"><span><b data-t="single">Single Camera</b><small>Smart Aware Single</small></span><strong>$9.99<small data-t="per_mo">/mo</small></strong></button>
+      <button class="ar-plan" data-pick="plan:um"><span><b data-t="pc_uc">Every camera</b><small data-t="pc_ucs">Smart Aware · add more later</small></span><strong>$19.99<small data-t="per_mo">/mo</small></strong></button>
     </div>
-    <p class="ar-fine">Your free month ends Dec 16, 2026.</p>
-    <button class="ar-cta" data-go="next"><span data-show="plan:s1">Continue with Single Camera</span><span data-show="plan:um">Continue with every camera</span><span data-show="plan:uy">Continue</span></button>
-    <div class="ar-legal"><span>Terms</span><span>Privacy</span><span>Restore</span></div>
+    <p data-t="pc_fine" class="ar-fine">Your free month ends Dec 16, 2026.</p>
+    <button class="ar-cta" data-go="next"><span data-show="plan:s1"><span data-t="pc_c1">Continue with Single Camera</span></span><span data-show="plan:um"><span data-t="pc_c2">Continue with every camera</span></span><span data-show="plan:uy"><span data-t="cont">Continue</span></span></button>
+    <div class="ar-legal"><span data-t="terms">Terms</span><span data-t="privacy">Privacy</span><span data-t="restore">Restore</span></div>
   </div>
 </section>
 
 <section class="scr" data-id="home">
-  <div class="ar-nav"><span class="ar-ico">◎</span><b>My Home ⌄</b><span class="ar-ico">⊕</span></div>
+  <div class="ar-nav"><span class="ar-ico">◎</span><b data-t="nav_home">My Home ⌄</b><span class="ar-ico">⊕</span></div>
   <div class="ar-body ar-body-nav ar-home">
-    <div class="ar-trial"><b>Arlo Secure</b><span>Free month · until Dec 16, 2026</span></div>
-    <div class="ar-modes"><button class="on"><i>⌂</i>Arm Away</button><button><i>⌂</i>Arm Home</button><button><i>◇</i>Standby</button></div>
+    <div class="ar-trial"><b>Arlo Secure</b><span data-t="h_trial">Free month · until Dec 16, 2026</span></div>
+    <div class="ar-modes"><button data-t="h_away" class="on"><i>⌂</i>Arm Away</button><button data-t="h_home"><i>⌂</i>Arm Home</button><button data-t="h_stby"><i>◇</i>Standby</button></div>
     <div class="ar-cam">
       <img data-show="ad:a" src="assets/crop/driveway.jpg" alt=""><img data-show="ad:b" src="assets/crop/patio.jpg" alt=""><img data-show="ad:c" src="assets/crop/frontdoor.jpg" alt="">
-      <span class="ar-cam-t">Now</span><b class="ar-cam-n"><span data-bind="label:where"></span></b>
+      <span data-t="h_now" class="ar-cam-t">Now</span><b class="ar-cam-n"><span data-bind="label:where"></span></b>
     </div>
-    <div class="ar-sens"><div><i>▯</i><b>Front Door</b><small>Closed</small></div><div><i>▤</i><b>Window</b><small>Open</small></div><div><i>◒</i><b>Kitchen Sink</b><small>No Water</small></div></div>
+    <div class="ar-sens"><div><i>▯</i><b data-t="w_fd">Front Door</b><small data-t="h_closed">Closed</small></div><div><i>▤</i><b data-t="h_win">Window</b><small data-t="h_open">Open</small></div><div><i>◒</i><b data-t="h_sink">Kitchen Sink</b><small data-t="h_nowater">No Water</small></div></div>
   </div>
-  <div class="ar-tabs"><span class="on"><i>⌂</i>Dashboard</span><span><i>▤</i>Feed</span><span><i>◈</i>Emergency</span><span><i>▦</i>Devices</span><span><i>◷</i>Routines</span></div>
+  <div class="ar-tabs"><span data-t="tab1" class="on"><i>⌂</i>Dashboard</span><span data-t="tab2"><i>▤</i>Feed</span><span data-t="tab3"><i>◈</i>Emergency</span><span data-t="tab4"><i>▦</i>Devices</span><span data-t="tab5"><i>◷</i>Routines</span></div>
 </section>
 <!-- SCREENS:END -->
 
@@ -1466,22 +1481,22 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
   }
  },
  "chips": {
-  "ad": "Meta ad",
-  "welcome-a": "Welcome",
-  "welcome-b": "Welcome",
-  "welcome-c": "Welcome",
+  "ad": "The ad",
+  "welcome-a": "Arrive",
+  "welcome-b": "Arrive",
+  "welcome-c": "Arrive",
   "setup": "Add device",
   "name": "Where",
-  "ask-a": "Ask",
-  "ask-b": "Ask",
-  "ask-c": "Ask",
-  "value-a": "First alert",
-  "value-b": "First clip",
-  "value-c": "First ring",
+  "ask-a": "One question",
+  "ask-b": "One question",
+  "ask-c": "One question",
+  "value-a": "First win",
+  "value-b": "First win",
+  "value-c": "First win",
   "paywall-a": "Paywall",
   "paywall-b": "Paywall",
   "paywall-c": "Paywall",
-  "home": "Dashboard"
+  "home": "In the app"
  },
  "hero": [
   "value-a",
@@ -1495,36 +1510,36 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
  "ideas": [
   {
    "screen": "ask-a",
-   "title": "Ask what Arlo should watch for, then use the answer",
-   "what": "Your FAQ says the free month starts the moment setup ends; nothing on the way asks what the camera was bought for. One question per ad (the alerts to turn on, the moments to keep, who comes to the door) and the answer names the sample alert, “Person detected on Driveway”, and the paywall.",
+   "title": "Ask what the camera is for",
+   "what": "Today your FAQ says the free month starts as soon as setup ends, and nothing we can see asks why they bought the camera. Here one question per ad (which alerts, which moments, who comes to the door) names the sample alert, “Person detected on Driveway”, and the paywall.",
    "impact": "+10–20%",
    "il": "CR to purchase"
   },
   {
    "screen": "value-a",
    "title": "Show a smart alert before the price",
-   "what": "Their camera, under the name they gave it, in your own Motion Alert layout with Mute Notifications, Activate Siren, Call a Friend and Emergency Response. Version B shows their first saved clip, version C the doorbell ringing. After the free month, without a plan, the alert can’t name a person.",
+   "what": "Today, as far as your listing and FAQ show, a new owner meets the plan’s smart alerts only once the camera starts recording. Here they see one first: a sample Motion Alert from the camera they just named, in your own layout, with its four actions.",
    "impact": "+10–15%",
    "il": "CR to purchase"
   },
   {
    "screen": "paywall-b",
-   "title": "Sell the plan in the app, the day the free month starts",
-   "what": "Your FAQ: the free month “begins as soon as you complete onboarding the product in the Arlo Secure App”, and afterwards people subscribe at my.arlo.com. Put the plan at the end of setup instead, with the day it ends: Today, then Dec 16, 2026.",
+   "title": "Offer the plan the day the free month starts",
+   "what": "Today your FAQ says the free month starts when setup ends in the app, then sends people to my.arlo.com to subscribe. Here the plan sits at the end of setup, with the day the month ends: Today, then Dec 16, 2026.",
    "impact": "+10–20%",
    "il": "CR to purchase"
   },
   {
    "screen": "paywall-a",
-   "title": "Price by the cameras they own, and make the year add up",
-   "what": "Single Camera at $9.99 a month, every camera at $19.99 a month, or $219.00 a year: $18.25 a month, $20.88 less than twelve monthly payments. All three are your US App Store prices.",
+   "title": "Price by the cameras they own",
+   "what": "Today your App Store lists Smart Aware Single at $9.99 and Smart Aware at $19.99 or $219.00, with no hint which fits. Here all three sit in one list, the year written as $18.25 a month: $20.88 less than twelve monthly payments.",
    "impact": "+10–15%",
    "il": "ARPU"
   },
   {
    "screen": "paywall-c",
-   "title": "Put your proof where they decide",
-   "what": "★ 4.2 from 433K ratings on the US App Store and your own line, “Smarter. Safer. Trusted by millions.”, above the plans in the app, not only on us.arlo.com.",
+   "title": "Put your 4.2 by the button",
+   "what": "Today your proof, “Smarter. Safer. Trusted by millions.”, lives on us.arlo.com. Your App Store page shows 4.2 from 433K ratings. Here both sit above the plans, in view while the plan is chosen.",
    "impact": "+10–15%",
    "il": "CR to purchase"
   }
@@ -1562,11 +1577,11 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
   },
   "ask-a": {
    "idea": 1,
-   "t": "Ask what Arlo should watch for",
+   "t": "Ask what the camera is for",
    "why": "<b>Try</b> People, Packages, Vehicles, Animals and Fire with the first two ticked, <b>because</b> the ad promised to know who’s there and keep an eye on deliveries, and the answer names the alert that follows.",
    "iv": "CR +10–20%",
    "il": "to purchase",
-   "also": "Version A’s own recommendation A2."
+   "also": "The Early Warning flow’s own recommendation."
   },
   "ask-b": {
    "idea": 1,
@@ -1595,7 +1610,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
    "why": "<b>Try</b> their first clip saved in the Feed, titled like the ad’s “Rachel and Dog on Patio”, <b>because</b> video history needs a plan after the free month and this ad sold keeping moments.",
    "iv": "CR +10–15%",
    "il": "to purchase",
-   "also": "Version B’s own recommendation B2."
+   "also": "The moments flow’s own recommendation."
   },
   "value-c": {
    "idea": 2,
@@ -1603,7 +1618,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
    "why": "<b>Try</b> a doorbell ring with Answer before the price, <b>because</b> the ad promised “Answer from anywhere” and package detection is what the plan adds.",
    "iv": "CR +10–15%",
    "il": "to purchase",
-   "also": "Version C’s own recommendation C2."
+   "also": "The doorbell flow’s own recommendation."
   },
   "paywall-a": {
    "idea": 4,
@@ -1615,7 +1630,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
   },
   "paywall-b": {
    "idea": 3,
-   "t": "Sell the plan the day the free month starts",
+   "t": "Offer the plan the day the free month starts",
    "why": "<b>Try</b> the plan at the end of setup with the day the free month ends, <b>because</b> your FAQ says the month starts when setup ends in the app and afterwards sends people to my.arlo.com to subscribe.",
    "iv": "CR +10–20%",
    "il": "to purchase",
@@ -1623,7 +1638,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
   },
   "paywall-c": {
    "idea": 5,
-   "t": "Proof where they decide",
+   "t": "Put your 4.2 by the button",
    "why": "<b>Try</b> ★ 4.2 from 433K ratings and “Trusted by millions” above the plans, <b>because</b> a new doorbell owner is deciding whether to pay for a device they already own, and that proof only lives on us.arlo.com today.",
    "iv": "CR +10–15%",
    "il": "to purchase",
@@ -1635,10 +1650,337 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
    "why": "Your dashboard from the listing, with the free month still running. Closing the paywall never opens a second one."
   }
  },
- "langs": [],
- "i18n": {},
+ "langs": [
+  {
+   "code": "en",
+   "name": "EN"
+  },
+  {
+   "code": "de",
+   "name": "DE"
+  },
+  {
+   "code": "fr",
+   "name": "FR"
+  }
+ ],
+ "i18n": {
+  "de": {
+   "ad_note": "Heute führt diese Anzeige zu us.arlo.com. Sobald die Kamera da ist, wird der Plan in der Arlo Secure App gewählt: Hier startet sie mit dieser Anzeige.",
+   "wa_h": "Wissen, wer da ist – und wer nicht da sein sollte.",
+   "wa_s": "Richte deine Kamera ein und wähle die Warnungen, die zählen. Dein Gratismonat Arlo Secure beginnt, sobald die Einrichtung fertig ist.",
+   "get": "Los geht’s",
+   "login": "Anmelden",
+   "wb_h": "Manche Momente behältst du, manche teilst du.",
+   "wb_s": "Richte deine Kamera ein und behalte die Clips, die zählen. Dein Gratismonat Arlo Secure beginnt, sobald die Einrichtung fertig ist.",
+   "wc_h": "Sieh, wer vor der Tür steht. Antworte von überall.",
+   "wc_s": "Einfache Einrichtung in wenigen Schritten. Dein Gratismonat Arlo Secure beginnt, sobald die Einrichtung fertig ist.",
+   "nav_add": "Gerät hinzufügen",
+   "setup_h": "Was richtest du ein?",
+   "dev_cam": "Kameras",
+   "dev_bell": "Video-Türklingeln",
+   "dev_flood": "Flutlichter",
+   "dev_sys": "Sicherheitssystem",
+   "note_cam": "Die Essential Solar Security Camera aus deiner Anzeige ist schon ausgewählt.",
+   "note_bell": "Die Video Doorbell aus deiner Anzeige ist schon ausgewählt.",
+   "note_flood": "Flutlichtkameras.",
+   "note_sys": "Arlo Home Security System.",
+   "cont": "Weiter",
+   "cont_w": "Weiter",
+   "ok_bell": "Video Doorbell verbunden",
+   "ok_cam": "Kamera verbunden",
+   "ok_flood": "Flutlicht verbunden",
+   "ok_sys": "System verbunden",
+   "ok_s": "QR-Code gescannt · WLAN verbunden",
+   "name_h": "Wo hängt sie?",
+   "name_s": "Wir nutzen den Namen in deinen Warnungen.",
+   "w_fd": "Haustür",
+   "w_dw": "Einfahrt",
+   "w_by": "Garten",
+   "w_pt": "Terrasse",
+   "w_gr": "Garage",
+   "w_lr": "Wohnzimmer",
+   "prev_k": "Deine Warnungen lauten",
+   "prev_b": "Person erkannt: <span data-bind=\"label:where\"></span>, 9:41 Uhr.",
+   "nav_sa": "Smarte Warnungen",
+   "aska_h": "Worüber soll Arlo dich informieren?",
+   "aska_s": "Dein Gratismonat enthält alle. Die gewählten schalten wir zuerst ein.",
+   "aska_p": "Personen<small>„Person erkannt: <span data-bind=\"label:where\"></span>“</small>",
+   "aska_k": "Pakete<small>Lieferungen im Blick behalten</small>",
+   "aska_v": "Fahrzeuge<small>Familienauto oder Überraschungsbesuch</small>",
+   "aska_a": "Tiere<small>Der Hund oder ein seltener Bär</small>",
+   "aska_f": "Feuer<small>Gefahr erkennen, bevor sie sich ausbreitet</small>",
+   "aska_cta": "<span data-bind=\"count:watch\"></span> Warnungen einschalten",
+   "nav_vh": "Videoverlauf",
+   "askb_h": "Was möchtest du behalten?",
+   "askb_s": "Dein Gratismonat speichert jeden Clip. Die gewählten Momente heften wir oben in deinen Feed.",
+   "askb_fam": "Familienmomente",
+   "askb_fams": "Begrüßungen und Heimkommen",
+   "askb_pet": "Haustiere",
+   "askb_pets": "Badetag – und andere Pläne",
+   "askb_vis": "Besucher",
+   "askb_viss": "Erwartet oder nicht",
+   "askb_del": "Lieferungen",
+   "askb_dels": "Jedes Paket, auf Video",
+   "nav_vd": "Video Doorbell",
+   "askc_h": "Wer kommt am häufigsten an deine Tür?",
+   "askc_s": "Danach richten wir die Warnungen deiner Türklingel aus.",
+   "askc_del": "Lieferungen<small>Paket an der Tür erkannt</small>",
+   "askc_fam": "Familie und Freunde<small>Wissen, wer es ist, bevor du öffnest</small>",
+   "askc_kids": "Kinder kommen heim<small>Sehen, dass sie sicher ankommen</small>",
+   "askc_away": "Ich bin oft unterwegs<small>Antworte von überall</small>",
+   "va_k": "Beispielwarnung · dein Gratismonat",
+   "va_alert": "Bewegungswarnung",
+   "va_now": "jetzt",
+   "act1": "Mitteilungen stummschalten",
+   "act2": "Sirene aktivieren",
+   "act3": "Freund anrufen",
+   "act4": "Notfallhilfe",
+   "va_n": "Ohne Plan nach dem Gratismonat kann diese Warnung keine Person benennen.",
+   "nav_home": "Mein Zuhause ⌄",
+   "vb_day": "Heute, 16. November",
+   "vb_saved": "✓ Gespeichert",
+   "vb_date": "Samstag, 4. Oktober · 14:35",
+   "vb_save": "⤓ Speichern",
+   "vb_share": "⇪ Teilen",
+   "vb_fav": "☆ Favorit",
+   "vb_t1": "14:35",
+   "vb_t2": "13:12",
+   "vb_an": "Tier",
+   "vb_pe": "Person",
+   "vb_c1": "Kamera <span data-bind=\"label:where\"></span> | 0:10",
+   "vb_c2": "Kamera <span data-bind=\"label:where\"></span> | 0:08",
+   "vb_n": "Dein erster Clip ist gespeichert. Arlo Secure behält Clips 60 Tage lang.",
+   "vc_pkg": "▣ Paket an der Haustür erkannt",
+   "vc_per": "◉ Person an der Haustür erkannt",
+   "vc_ring": "Video Doorbell klingelt",
+   "vc_dec": "<i>✕</i>Ablehnen",
+   "vc_acc": "<i>✆</i>Annehmen",
+   "vc_n": "Beispielanruf. Antworte von überall und behalte den Clip.",
+   "pa_h": "Behalte die Warnungen, die den Unterschied kennen.",
+   "pa_s": "Dein Gratismonat endet am 16. Dez. 2026. Danach, ohne Plan:",
+   "pa_no": "Kein Plan",
+   "pa_r1": "„Person erkannt: <span data-bind=\"label:where\"></span>“",
+   "pa_r2": "Pakete, Fahrzeuge, Tiere",
+   "pa_r3": "Feuererkennung",
+   "pa_r4": "60 Tage Videoverlauf",
+   "pa_um": "Alle Kameras · Monatlich",
+   "per_mo": "/Monat",
+   "pa_uy": "Alle Kameras · Jährlich",
+   "yr_sub": "$219.00 im Jahr · $18.25/Monat",
+   "save": "$20.88 sparen",
+   "single": "Eine Kamera",
+   "pa_cta": "Meine smarten Warnungen behalten",
+   "terms": "AGB",
+   "privacy": "Datenschutz",
+   "restore": "Wiederherstellen",
+   "pb_saved": "✓ Rachel and Dog on Patio · gespeichert",
+   "pb_h": "Behalte jeden Moment 60 Tage lang.",
+   "pb_t1": "Heute",
+   "pb_t1s": "Einrichtung fertig. Dein Gratismonat Arlo Secure beginnt.",
+   "pb_t2": "16. Dez. 2026",
+   "pb_t2s": "Dein Gratismonat endet. Smart Aware behält deine Clips.",
+   "pb_y": "Jährlich",
+   "pb_m": "Monatlich",
+   "pb_mc": "Alle Kameras",
+   "pb_cta": "Meine Clips behalten",
+   "pc_rating": "4,0 · 21.754 Bewertungen im App Store",
+   "pc_line": "Smarter. Sicherer. Millionen vertrauen darauf.",
+   "pc_h": "Wisse jedes Mal, wer vor der Tür steht.",
+   "pc_b1": "<b>Paket- und Personenerkennung</b> an deiner Haustür",
+   "pc_b2": "<b>60 Tage Videoverlauf</b> für jedes Klingeln",
+   "pc_b3": "<b>Interaktive Mitteilungen</b> auf dem Sperrbildschirm",
+   "pc_uc": "Alle Kameras",
+   "pc_ucs": "Smart Aware · später erweiterbar",
+   "pc_fine": "Dein Gratismonat endet am 16. Dez. 2026.",
+   "pc_c1": "Weiter mit einer Kamera",
+   "pc_c2": "Weiter mit allen Kameras",
+   "h_trial": "Gratismonat · bis 16. Dez. 2026",
+   "h_away": "<i>⌂</i>Abwesend",
+   "h_home": "<i>⌂</i>Zuhause",
+   "h_stby": "<i>◇</i>Standby",
+   "h_now": "Jetzt",
+   "h_closed": "Geschlossen",
+   "h_win": "Fenster",
+   "h_open": "Offen",
+   "h_sink": "Spüle",
+   "h_nowater": "Kein Wasser",
+   "tab1": "<i>⌂</i>Übersicht",
+   "tab2": "<i>▤</i>Feed",
+   "tab3": "<i>◈</i>Notfall",
+   "tab4": "<i>▦</i>Geräte",
+   "tab5": "<i>◷</i>Routinen"
+  },
+  "fr": {
+   "ad_note": "Aujourd’hui, cette annonce mène à us.arlo.com. Une fois la caméra arrivée, c’est dans l’app Arlo Secure que le forfait se choisit : ici, elle s’ouvre sur cette annonce.",
+   "wa_h": "Sachez qui est là, et qui ne devrait pas l’être.",
+   "wa_s": "Installez votre caméra et choisissez les alertes qui comptent. Votre mois gratuit d’Arlo Secure commence dès la fin de l’installation.",
+   "get": "Commencer",
+   "login": "Se connecter",
+   "wb_h": "Certains moments se gardent, d’autres se partagent.",
+   "wb_s": "Installez votre caméra et gardez les clips qui comptent. Votre mois gratuit d’Arlo Secure commence dès la fin de l’installation.",
+   "wc_h": "Voyez qui est à la porte. Répondez de partout.",
+   "wc_s": "Installation simple, en quelques étapes. Votre mois gratuit d’Arlo Secure commence dès la fin de l’installation.",
+   "nav_add": "Ajouter un appareil",
+   "setup_h": "Qu’installez-vous ?",
+   "dev_cam": "Caméras",
+   "dev_bell": "Sonnettes vidéo",
+   "dev_flood": "Projecteurs",
+   "dev_sys": "Système de sécurité",
+   "note_cam": "L’Essential Solar Security Camera de votre annonce est déjà sélectionnée.",
+   "note_bell": "La Video Doorbell de votre annonce est déjà sélectionnée.",
+   "note_flood": "Caméras projecteurs.",
+   "note_sys": "Arlo Home Security System.",
+   "cont": "Continuer",
+   "cont_w": "Continuer",
+   "ok_bell": "Video Doorbell connectée",
+   "ok_cam": "Caméra connectée",
+   "ok_flood": "Projecteur connecté",
+   "ok_sys": "Système connecté",
+   "ok_s": "QR code scanné · Wi-Fi connecté",
+   "name_h": "Où est-elle ?",
+   "name_s": "Ce nom apparaît dans vos alertes.",
+   "w_fd": "Porte d’entrée",
+   "w_dw": "Allée",
+   "w_by": "Jardin",
+   "w_pt": "Terrasse",
+   "w_gr": "Garage",
+   "w_lr": "Salon",
+   "prev_k": "Vos alertes diront",
+   "prev_b": "Personne détectée : <span data-bind=\"label:where\"></span>, 9:41.",
+   "nav_sa": "Alertes intelligentes",
+   "aska_h": "De quoi Arlo doit-il vous avertir ?",
+   "aska_s": "Votre mois gratuit les inclut toutes. Nous activons d’abord celles que vous choisissez.",
+   "aska_p": "Personnes<small>« Personne détectée : <span data-bind=\"label:where\"></span> »</small>",
+   "aska_k": "Colis<small>Gardez un œil sur les livraisons</small>",
+   "aska_v": "Véhicules<small>La voiture familiale ou une visite surprise</small>",
+   "aska_a": "Animaux<small>Le chien, ou un ours de passage</small>",
+   "aska_f": "Feu<small>Repérez le danger avant qu’il ne s’étende</small>",
+   "aska_cta": "Activer <span data-bind=\"count:watch\"></span> alertes",
+   "nav_vh": "Historique vidéo",
+   "askb_h": "Que voulez-vous garder ?",
+   "askb_s": "Votre mois gratuit garde chaque clip. Nous épinglons les moments choisis en haut de votre fil.",
+   "askb_fam": "Moments en famille",
+   "askb_fams": "Les bonjours et les retours",
+   "askb_pet": "Animaux",
+   "askb_pets": "Le bain, et d’autres projets",
+   "askb_vis": "Visiteurs",
+   "askb_viss": "Attendus ou non",
+   "askb_del": "Livraisons",
+   "askb_dels": "Chaque colis, en vidéo",
+   "nav_vd": "Video Doorbell",
+   "askc_h": "Qui sonne le plus souvent chez vous ?",
+   "askc_s": "Nous réglons les alertes de votre sonnette en fonction.",
+   "askc_del": "Livraisons<small>Colis détecté à la porte</small>",
+   "askc_fam": "Famille et amis<small>Savoir qui c’est avant d’ouvrir</small>",
+   "askc_kids": "Les enfants qui rentrent<small>Les voir arriver sains et saufs</small>",
+   "askc_away": "Je suis souvent absent<small>Répondez de partout</small>",
+   "va_k": "Alerte d’exemple · votre mois gratuit",
+   "va_alert": "Alerte de mouvement",
+   "va_now": "maintenant",
+   "act1": "Couper les notifications",
+   "act2": "Activer la sirène",
+   "act3": "Appeler un ami",
+   "act4": "Intervention d’urgence",
+   "va_n": "Sans forfait après votre mois gratuit, cette alerte ne peut pas nommer une personne.",
+   "nav_home": "Mon domicile ⌄",
+   "vb_day": "Aujourd’hui, 16 novembre",
+   "vb_saved": "✓ Enregistré",
+   "vb_date": "Samedi 4 octobre · 14:35",
+   "vb_save": "⤓ Enregistrer",
+   "vb_share": "⇪ Partager",
+   "vb_fav": "☆ Favori",
+   "vb_t1": "14:35",
+   "vb_t2": "13:12",
+   "vb_an": "Animal",
+   "vb_pe": "Personne",
+   "vb_c1": "Caméra <span data-bind=\"label:where\"></span> | 0:10",
+   "vb_c2": "Caméra <span data-bind=\"label:where\"></span> | 0:08",
+   "vb_n": "Votre premier clip est enregistré. Arlo Secure garde les clips 60 jours.",
+   "vc_pkg": "▣ Colis détecté à la porte d’entrée",
+   "vc_per": "◉ Personne détectée à la porte d’entrée",
+   "vc_ring": "La Video Doorbell sonne",
+   "vc_dec": "<i>✕</i>Refuser",
+   "vc_acc": "<i>✆</i>Répondre",
+   "vc_n": "Appel d’exemple. Répondez de partout, puis gardez le clip.",
+   "pa_h": "Gardez les alertes qui font la différence.",
+   "pa_s": "Votre mois gratuit se termine le 16 déc. 2026. Ensuite, sans forfait :",
+   "pa_no": "Sans forfait",
+   "pa_r1": "« Personne détectée : <span data-bind=\"label:where\"></span> »",
+   "pa_r2": "Colis, véhicules, animaux",
+   "pa_r3": "Détection du feu",
+   "pa_r4": "60 jours d’historique vidéo",
+   "pa_um": "Toutes les caméras · Mensuel",
+   "per_mo": "/mois",
+   "pa_uy": "Toutes les caméras · Annuel",
+   "yr_sub": "$219.00 par an · $18.25/mois",
+   "save": "Économisez $20.88",
+   "single": "Une caméra",
+   "pa_cta": "Garder mes alertes intelligentes",
+   "terms": "Conditions",
+   "privacy": "Confidentialité",
+   "restore": "Restaurer",
+   "pb_saved": "✓ Rachel and Dog on Patio · enregistré",
+   "pb_h": "Gardez chaque moment pendant 60 jours.",
+   "pb_t1": "Aujourd’hui",
+   "pb_t1s": "Installation terminée. Votre mois gratuit d’Arlo Secure commence.",
+   "pb_t2": "16 déc. 2026",
+   "pb_t2s": "Votre mois gratuit se termine. Smart Aware garde vos clips.",
+   "pb_y": "Annuel",
+   "pb_m": "Mensuel",
+   "pb_mc": "Toutes les caméras",
+   "pb_cta": "Garder mes clips",
+   "pc_rating": "4,2 · 20 790 notes sur l’App Store",
+   "pc_line": "Plus intelligent. Plus sûr. Des millions nous font confiance.",
+   "pc_h": "Sachez qui est à la porte, à chaque fois.",
+   "pc_b1": "<b>Détection des colis et des personnes</b> à votre porte d’entrée",
+   "pc_b2": "<b>60 jours d’historique vidéo</b> de chaque sonnerie",
+   "pc_b3": "<b>Notifications interactives</b> depuis l’écran verrouillé",
+   "pc_uc": "Toutes les caméras",
+   "pc_ucs": "Smart Aware · d’autres plus tard",
+   "pc_fine": "Votre mois gratuit se termine le 16 déc. 2026.",
+   "pc_c1": "Continuer avec une caméra",
+   "pc_c2": "Continuer avec toutes les caméras",
+   "h_trial": "Mois gratuit · jusqu’au 16 déc. 2026",
+   "h_away": "<i>⌂</i>Absent",
+   "h_home": "<i>⌂</i>Présent",
+   "h_stby": "<i>◇</i>Veille",
+   "h_now": "En direct",
+   "h_closed": "Fermée",
+   "h_win": "Fenêtre",
+   "h_open": "Ouverte",
+   "h_sink": "Évier",
+   "h_nowater": "Pas d’eau",
+   "tab1": "<i>⌂</i>Accueil",
+   "tab2": "<i>▤</i>Fil",
+   "tab3": "<i>◈</i>Urgence",
+   "tab4": "<i>▦</i>Appareils",
+   "tab5": "<i>◷</i>Routines"
+  }
+ },
  "prices": {},
- "labelsI18n": {},
+ "labelsI18n": {
+  "de": {
+   "where": {
+    "fd": "Haustür",
+    "dw": "Einfahrt",
+    "by": "Garten",
+    "pt": "Terrasse",
+    "gr": "Garage",
+    "lr": "Wohnzimmer"
+   }
+  },
+  "fr": {
+   "where": {
+    "fd": "Porte d’entrée",
+    "dw": "Allée",
+    "by": "Jardin",
+    "pt": "Terrasse",
+    "gr": "Garage",
+    "lr": "Salon"
+   }
+  }
+ },
  "liveUrl": "https://eddieatadapty.github.io/arlo-flow-rebuild/",
  "video": "assets/walkthrough.mp4",
  "poster": "assets/walkthrough-poster.jpg",
@@ -1741,7 +2083,7 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
    },
    "ask-a": {
     "n": 1,
-    "t": "Ask what Arlo should watch for",
+    "t": "Ask what the camera is for",
     "l": "People and packages ticked, as the ad promised.",
     "o": "+10–20%",
     "ol": "CR to purchase"
@@ -1762,28 +2104,28 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
    },
    "value-b": {
     "n": 2,
-    "t": "Ad 2: their first clip, saved",
+    "t": "The “Bath day” ad: their first clip, saved",
     "l": "Titled like the ad’s “Rachel and Dog on Patio”.",
     "o": "+10–15%",
     "ol": "CR to purchase"
    },
    "paywall-b": {
     "n": 3,
-    "t": "Sell the plan as the free month starts",
+    "t": "Offer the plan as the free month starts",
     "l": "Today, then Dec 16, 2026, in the app.",
     "o": "+10–20%",
     "ol": "CR to purchase"
    },
    "value-c": {
     "n": 2,
-    "t": "Ad 3: the doorbell rings first",
+    "t": "The doorbell ad: it rings first",
     "l": "“Answer from anywhere”, before any price.",
     "o": "+10–15%",
     "ol": "CR to purchase"
    },
    "paywall-c": {
     "n": 5,
-    "t": "Proof where they decide",
+    "t": "Put your 4.2 by the button",
     "l": "★ 4.2 from 433K ratings, above the plans.",
     "o": "+10–15%",
     "ol": "CR to purchase"
@@ -1845,6 +2187,10 @@ html.jn{--jn-dark:#22211f;--jn-lt:#a3e8d1;--jn-acc:#00283c;--jn-acc2:#00283c;--j
     {
      "dt": "Questions and screen copy",
      "dd": "Ours, written in your voice from the ads and the plans page. Every screen after the ad is a proposal."
+    },
+    {
+     "dt": "German and French phones",
+     "dd": "Translated by us, not by Arlo; your US ad stays in English. Picked from where your team and markets are: the European subscriber P&L run from London, EMEA digital acquisition, Arlo Europe in Stockholm, and Germany and France as your two biggest non-English European storefronts. Ratings from each storefront on 16 Nov 2026: Germany 4.05 from 21,754, France 4.21 from 20,790. The App Store web no longer lists in-app prices by country (only “In-App Purchases: Yes”), so the plans stay at your US prices."
     }
    ]
   },
@@ -1886,6 +2232,12 @@ var AD_DEF = {
   c: {dev: 'bell', where: 'fd', door: 'del', plan: 's1'}
 };
 var WATCH_T = {people: 'Person', packages: 'Package', vehicles: 'Vehicle', animals: 'Animal', fire: 'Fire'};
+/* the sample alert in each phone language (DE / FR translated by us) */
+var ALERT = {
+  en: {w: WATCH_T, f: function(k, w){ return (k === 'fire' ? 'Fire may have been detected on ' : WATCH_T[k] + ' detected on ') + w + ' at 9:41AM.'; }},
+  de: {w: {people: 'Person', packages: 'Paket', vehicles: 'Fahrzeug', animals: 'Tier'}, f: function(k, w){ return (k === 'fire' ? 'Möglicher Brand erkannt' : this.w[k] + ' erkannt') + ': ' + w + ', 9:41 Uhr.'; }},
+  fr: {w: {people: 'Personne détectée', packages: 'Colis détecté', vehicles: 'Véhicule détecté', animals: 'Animal détecté'}, f: function(k, w){ return (k === 'fire' ? 'Incendie possible détecté' : this.w[k]) + ' : ' + w + ', 9:41.'; }}
+};
 window.onSync = function(S){
   if (S._a !== S.ad && AD_DEF[S.ad]) {
     var d = AD_DEF[S.ad]; S._a = S.ad;
@@ -1894,7 +2246,8 @@ window.onSync = function(S){
   }
   var first = (S.watch || [])[0] || 'people';
   var w = (C.labels.where || {})[S.where] || 'Front Door';
-  S.alertA = (first === 'fire' ? 'Fire may have been detected on ' : WATCH_T[first] + ' detected on ') + w + ' at 9:41AM.';
+  var L = ALERT[S.lang] || ALERT.en;
+  S.alertA = L.f(first, w);
   document.querySelectorAll('[data-bind="alertA"]').forEach(function(el){ el.textContent = S.alertA; });
 };
 /* hero stills and ?phone shots of a version screen: switch to that version first, so its art and defaults show */
@@ -2211,7 +2564,7 @@ function tourInit(){
       cap.innerHTML = r ? '<span class="au-duo-k">' + label(id) + '</span>' + r[f.k]
                         : '<span class="au-duo-k">' + label(id) + '</span>' + (shared || 'Same screen for every ad.');
     });
-    var sc = document.getElementById('duoStepCap'); if (sc) sc.innerHTML = shared && id === 'today' ? shared : '';
+    var sc = document.getElementById('duoStepCap'); if (sc) sc.innerHTML = (D.stepLine && D.stepLine[id]) || (shared && id === 'today' ? shared : '');
   }
   function both(id, n, only){
     var st = STEPS.find(function(s){ return s.id === id; }) || stepFor(id);
@@ -2322,6 +2675,15 @@ function tourInit(){
   var app = C.app || J.app || '', demo = J.demo || 'https://adapty.io/schedule-demo/';
   var icon = J.icon || (M.hero && M.hero.icon) || '';
   var root = document.createElement('div'); root.className = 'jn-root';
+  /* channel colours, as the Atlas "Ad to Pro" pages use them: one hue per channel, a darker / lighter shade when two
+     phones come from the same channel. J.channels = {a:'#hex'} overrides. */
+  var CH = {youtube: '#FF0033', apple: '#7346E0', meta: '#0866FF', tiktok: '#FE2C55', google: '#1A73E8', web: '#3D3C3A'};
+  function chanKey(s){ s = String(s || '').toLowerCase(); return /youtube/.test(s) ? 'youtube' : /apple|search|asa|app store/.test(s) ? 'apple' : /tiktok/.test(s) ? 'tiktok' : /google|admob/.test(s) ? 'google' : /web|site/.test(s) && !/meta|facebook|instagram/.test(s) ? 'web' : 'meta'; }
+  function shade(hex, n){ if (!n) return hex; var c = hex.replace('#', '').match(/../g).map(function(x){ return parseInt(x, 16); }), t = n === 1 ? 0 : 255, k = n === 1 ? .3 : .32;
+    return '#' + c.map(function(v){ return ('0' + Math.round(v + (t - v) * k).toString(16)).slice(-2); }).join(''); }
+  var COL = {}, seen = {};
+  (D.flows || []).forEach(function(f){ var ck = chanKey(f.chan); seen[ck] = seen[ck] === undefined ? 0 : seen[ck] + 1; COL[f.k] = (J.channels && J.channels[f.k]) || shade(CH[ck], seen[ck]); });
+  function colFor(a){ if (a.c) return a.c; if (a.flow && COL[a.flow]) return COL[a.flow]; return CH[chanKey(a.chan || a.kind)]; }
 
   /* nav: their mark, "Growth audit · by Adapty", the two views, Book a demo */
   var L = J.logo || {}, logo;
@@ -2357,8 +2719,7 @@ function tourInit(){
   /* 4 your ads: one tab per promise, the ad itself playing, its frames, then what it promises and where it lands */
   var A = J.ads || {tabs: []};
   var ads = '<section class="jn-sec" id="jnAds"><div class="jn-wrap"><p class="jn-kick">' + (A.kick || 'Your ads') + '</p><h2 class="jn-h2">' + halves(A.h2, 'b') + '</h2>' +
-    '<p class="jn-p">' + (A.p || '') + '</p><div class="jn-adtabs" id="jnAdTabs"></div><div class="jn-lib"><div class="jn-media" id="jnMedia"><div class="jn-vid" id="jnAdMedia"></div><div class="jn-strip" id="jnAdStrip"></div></div>' +
-    '<div class="jn-adb" id="jnAdB"></div></div>' + (A.more ? '<p class="jn-more">' + A.more + '</p>' : '') +
+    '<p class="jn-p">' + (A.p || '') + '</p><div class="jn-adlist" id="jnAdList"></div>' + (A.more ? '<p class="jn-more">' + A.more + '</p>' : '') +
     '<p class="jn-foot-l">' + (A.foot || 'Adapty can pick the first screen of the flow from the campaign the install came from, through the attribution you already run. A new promise gets its own first screen the same day, with no app release.') + '</p></div></section>';
 
   /* 5 the five ideas */
@@ -2372,9 +2733,11 @@ function tourInit(){
   /* 6 potential outcome: a dark card in their world + three do-cards (Day 1 / Week 1 / Week 2 from the ads config) */
   var O = J.outcome || {}, co = C.outcome || {};
   var nums = O.nums || [co.cr && [co.cr, O.crl || 'CR to purchase'], co.arpu && [co.arpu, O.arpul || 'ARPU']].filter(Boolean);
-  var dos = O.do || $$('#duo .au-duo-next > div').map(function(x){ return [$('b', x).innerHTML, $('h4', x).innerHTML, $('p', x).innerHTML]; });
-  var outc = '<section class="jn-sec"><div class="jn-wrap"><p class="jn-kick">Potential outcome</p><h2 class="jn-h2">' + halves(O.h2 || ['Five ideas,', 'three versions of one app.'], 'b') + '</h2>' +
-    '<div class="jn-outc"><div class="jn-osh"><div class="jn-og" aria-hidden="true">' + (O.tiles || words.slice(0, 9)).slice(0, 9).map(function(t, k){ return '<i style="--c:' + TC[k % TC.length] + '">' + t + '</i>'; }).join('') + '</div><div class="k">' + (O.k || 'Run together') + '</div><h3>' + (O.t || '') + '</h3>' +
+  var oimg = O.img === false ? '' : (O.img || (C.hero && C.hero[1] ? 'assets/hero/' + C.hero[1] + '.png' : ''));
+  var DOK = ['Do this week', 'Then', 'And measure'];
+  var dos = O.do || $$('#duo .au-duo-next > div').map(function(x, k){ return [DOK[k] || $('b', x).innerHTML, $('h4', x).innerHTML, $('p', x).innerHTML]; });
+  var outc = '<section class="jn-sec"><div class="jn-wrap"><p class="jn-kick">Potential outcome</p><h2 class="jn-h2">' + halves(O.h2 || ['Five ideas,', 'one first launch per ad.'], 'b') + '</h2>' +
+    '<div class="jn-outc"><div class="jn-osh' + (oimg ? ' jn-world' : '') + '">' + (oimg ? '<img class="jn-oimg" src="' + oimg + '" alt="">' : '<div class="jn-og" aria-hidden="true">' + (O.tiles || words.slice(0, 9)).slice(0, 9).map(function(t, k){ return '<i style="--c:' + TC[k % TC.length] + '">' + t + '</i>'; }).join('') + '</div>') + '<div class="k">' + (O.k || 'Run together') + '</div><h3>' + (O.t || '') + '</h3>' +
     '<div class="jn-nums">' + nums.map(function(n){ return '<div><b>' + n[0] + '</b><span>' + n[1] + '</span></div>'; }).join('') + '</div>' +
     '<p class="cap">' + (O.cap || 'Our estimate if the five run together. They overlap, so they don’t add up; each one is its own A/B test against today’s flow.') + '</p></div>' +
     '<div class="jn-do">' + dos.map(function(x){ return '<div><small>' + x[0] + '</small><h4>' + x[1] + '</h4><p>' + x[2] + '</p></div>'; }).join('') + '</div></div>' +
@@ -2391,7 +2754,7 @@ function tourInit(){
   var langs = (C.langs || []).length > 1 ? '<div class="jn-seg" id="jnLang" role="group" aria-label="Language">' + C.langs.map(function(l){ return '<button type="button" data-l="' + l.code + '">' + l.name + '</button>'; }).join('') + '</div>' : '';
   var proto = '<main class="jn-view" id="jnProto"><section class="jn-ph"><div class="jn-wrap"><p class="jn-kick">' + (P.kick || 'Prototype · one first launch per ad') + '</p>' +
     '<h1 class="jn-h1p">' + halves(P.h1 || ['Three ads.', 'Three first launches.'], 'b') + '</h1><p class="jn-p">' + (P.sub || '') + '</p>' +
-    (langs ? '<div class="jn-tool">' + langs + '</div>' : '') + '</div><div id="jnDuoSlot"></div>' +
+    (langs ? '<div class="jn-tool">' + langs + '</div><p class="jn-langnote" id="jnLangNote"></p>' : '') + '</div><div id="jnDuoSlot"></div>' +
     '<div class="jn-wrap"><div class="jn-qr"><div class="jn-qg" aria-hidden="true">' + tiles(48, false) + '</div><img src="assets/qr-app.png" alt="QR code that opens the prototype on a phone"><div class="t"><h4>' + (qr.t || 'Try it on your phone') + '</h4><p>' + (qr.p || 'Scan to open the prototype full screen, the way a new user would see it. Every screen here can be built in Adapty Flow Builder and tested against today’s.') + '</p></div>' +
     '<a class="jn-pill g jn-full" href="?app">Open it full screen</a><a class="jn-pill w" href="' + demo + '" target="_blank" rel="noopener">Book a demo</a></div>' +
     '<p class="jn-protofoot">' + (C.grounding || '') + '</p></div></section></main>';
@@ -2408,7 +2771,11 @@ function tourInit(){
     cards.innerHTML = I.map(function(d, i){ return '<button type="button" class="jn-icard" data-duoidea="' + (i + 1) + '" data-scr="' + d.screen + '"><small>Idea ' + (i + 1) + ' of ' + I.length + '</small><h4>' + d.title + '</h4><p>' + d.what + '</p>' +
       '<div class="jn-rowf">' + chip(d) + '<span class="jn-see">See it on the phones →</span></div>' + (kept[i] ? '<div class="kept">' + kept[i] + '</div>' : '') + '</button>'; }).join('');
     duo.appendChild(cards);
-    (D.flows || []).forEach(function(f){ var p = $('#duo .au-duo-' + f.k + ' .au-duo-pill'); if (p && /apple|search/i.test(f.chan || '')) p.classList.add('asa'); });
+    (D.flows || []).forEach(function(f){ $$('#duo .au-duo-' + f.k).forEach(function(x){ x.style.setProperty('--au-ring', COL[f.k]); }); });
+    /* number the steps the way Atlas does ("1 · The ad"), once trio.js has drawn them */
+    var stp = $('#duoSteps');
+    function numberSteps(){ var n = 0; $$('#duoSteps button[data-id]').forEach(function(b){ if (b.classList.contains('au-today')) return; n++; if (!b.querySelector('.jn-n')) b.insertAdjacentHTML('afterbegin', '<span class="jn-n">' + n + ' · </span>'); }); }
+    if (stp) { numberSteps(); new MutationObserver(numberSteps).observe(stp, {childList: true}); }
   }
 
   /* views */
@@ -2434,7 +2801,6 @@ function tourInit(){
     var o = e.target.closest('[data-open]'); if (o) { show(o.dataset.open); return; }
     var r = e.target.closest('[data-jnidea]'); if (r) { var n = r.dataset.jnidea; show('proto'); ready(function(){ var c = $('.jn-icard[data-duoidea="' + n + '"]'); if (c) c.click(); }); return; }
     var g = e.target.closest('[data-jngo]'); if (g) { var k = g.dataset.jngo; show('proto'); ready(function(){ var b = document.createElement('button'); b.hidden = true; b.dataset.duogo = k; duo.appendChild(b); b.click(); b.remove(); setTimeout(stage, 450); }); return; }
-    var a = e.target.closest('[data-jnad]'); if (a) { drawAd(+a.dataset.jnad); return; }
     var l = e.target.closest('#jnLang [data-l]'); if (l && window.setLang) { setLang(l.dataset.l); paintLang(); }
   });
   /* idea cards scroll the phones into view */
@@ -2444,51 +2810,55 @@ function tourInit(){
     if (!e.target.closest('[data-jnwalk]')) return;
     show('proto'); ready(function(){ var b = $('#walkBtn'); if (b && !b.classList.contains('on')) b.click(); });
   });
-  function paintLang(){ var cur = (window.S && S.lang) || (C.langs && C.langs[0].code); $$('#jnLang [data-l]').forEach(function(b){ b.classList.toggle('on', b.dataset.l === cur); }); }
+  function paintLang(){ var cur = (window.S && S.lang) || (C.langs && C.langs[0].code); $$('#jnLang [data-l]').forEach(function(b){ b.classList.toggle('on', b.dataset.l === cur); });
+    var ln = $('#jnLangNote'); if (ln) { var t = (J.langNote || {})[cur] || ''; ln.innerHTML = t; ln.style.display = t ? '' : 'none'; } }
   paintLang();
 
-  /* the ads card */
-  var tok = 0;
-  function drawAd(i){
-    var T = A.tabs || []; if (!T.length) return; var a = T[i] || T[0], my = ++tok;
-    $('#jnAdTabs').innerHTML = T.map(function(x, k){ return '<button type="button" data-jnad="' + k + '"' + (k === i ? ' class="on"' : '') + '>' + x.tab + (x.n ? ' · ' + x.n + ' ' + (x.unit || (x.n > 1 ? 'ads' : 'ad')) : '') + '</button>'; }).join('');
-    var kind = a.kind || 'video', tag = '<span class="jn-tag' + (kind === 'search' ? ' asa' : kind === 'image' ? ' img' : '') + '">' + (a.chan || 'Meta · running now') + '</span>', m;
-    if (kind === 'video') m = tag + '<video src="' + a.src + '" poster="' + (a.poster || '') + '"' + (a.fit ? ' class="jn-fit"' : '') + ' autoplay muted loop playsinline></video>';
-    else if (kind === 'image') m = tag + '<img src="' + a.src + '" alt="The ad"' + (a.fit ? ' class="jn-fit"' : '') + '>';
-    else if (kind === 'post') m = tag + '<div class="jn-post"><div class="jn-post-h"><img src="' + icon + '" alt=""><div><b>' + (a.page || app) + '</b><small>Sponsored · ◍</small></div><span>···</span></div>' +
+  /* the ads: one card per ad, each playing (video), animating (search) or showing as the feed does (post) */
+  function adMedia(a){
+    var kind = a.kind || 'video', tag = '<span class="jn-tag">' + (a.chan || 'Meta · running now') + '</span>';
+    if (kind === 'video') return tag + '<video src="' + a.src + '" poster="' + (a.poster || '') + '"' + (a.fit ? ' class="jn-fit"' : '') + ' autoplay muted loop playsinline></video>';
+    if (kind === 'image') return tag + '<img src="' + a.src + '" alt="The ad"' + (a.fit ? ' class="jn-fit"' : '') + '>';
+    if (kind === 'post') return tag + '<div class="jn-post"><div class="jn-post-h"><img src="' + icon + '" alt=""><div><b>' + (a.page || app) + '</b><small>Sponsored · ◍</small></div><span>···</span></div>' +
       '<p class="jn-post-t">' + (a.text || '') + '</p><div class="jn-post-m"><img src="' + a.src + '" alt="The ad"></div>' +
       '<div class="jn-post-l"><div><small>' + (a.domain || '') + '</small><b>' + (a.headline || '') + '</b></div><span>' + (a.cta || 'Learn more') + '</span></div></div>';
-    else { var S2 = J.asa || {};
-      m = tag + '<div class="jn-asa"><div class="jn-asa-bar"><span class="jn-asa-q"></span></div><div class="jn-asa-ad"><img src="' + (S2.icon || icon) + '" alt=""><div><b>' + (S2.name || app) + '</b><small>' + (S2.sub || '') + '</small><em>Ad</em></div><span>Get</span></div>' +
-        '<div class="jn-asa-shots">' + (S2.shots || []).slice(0, 3).map(function(s){ return '<img src="' + s + '" alt="">'; }).join('') + '</div></div>'; }
-    var box = $('#jnAdMedia'), media = $('#jnMedia');
-    box.innerHTML = m; box.classList.toggle('asa', kind === 'search'); media.style.removeProperty('--ar');
-    function fitAr(w, h){ if (w && h && my === tok) media.style.setProperty('--ar', w + '/' + h); }
-    var v = $('#jnAdMedia video');
-    if (v) { v.muted = true; v.addEventListener('loadedmetadata', function(){ fitAr(v.videoWidth, v.videoHeight); }); if (v.readyState >= 1) fitAr(v.videoWidth, v.videoHeight); var p = v.play(); if (p && p.catch) p.catch(function(){}); }
-    var im = kind === 'image' && $('#jnAdMedia > img');
-    if (im && !a.fit) { im.onload = function(){ fitAr(im.naturalWidth, im.naturalHeight); }; if (im.complete) fitAr(im.naturalWidth, im.naturalHeight); }
-    $('#jnAdStrip').innerHTML = (a.frames || []).slice(0, 4).map(function(s){ return '<img src="' + s + '" alt="">'; }).join('');
-    $('#jnAdStrip').style.display = (a.frames || []).length ? '' : 'none';
-    $('#jnAdB').innerHTML = '<div class="hook">' + a.hook + '</div>' + (a.en ? '<div class="en">' + a.en + '</div>' : '') + '<div class="meta">' + (a.meta || '') + '</div>' +
-      '<dl><dt>In the ad</dt><dd>' + (a.inad || '') + '</dd><dt>The promise</dt><dd>' + (a.promise || '') + '</dd><dt>Today it lands on</dt><dd>' + (a.today || '') + '</dd>' +
-      (a.rebuild ? '<dt>In the rebuild</dt><dd>' + a.rebuild + '</dd>' : '') + '</dl>' +
-      '<div class="go">' + (a.flow ? '<button type="button" class="jn-pill k" data-jngo="' + a.flow + '">Open its flow</button>' : '<span class="jn-foot-l">' + (a.uses || '') + '</span>') + '</div>';
-    if (kind === 'search') typeTerm(a.term || a.tab.replace(/[“”"]/g, ''), my);
+    var S2 = J.asa || {};
+    return tag + '<div class="jn-asa"><div class="jn-asa-bar"><span class="jn-asa-q"></span></div><div class="jn-asa-ad"><img src="' + (S2.icon || icon) + '" alt=""><div><b>' + (S2.name || app) + '</b><small>' + (S2.sub || '') + '</small><em>Ad</em></div><span>Get</span></div>' +
+      '<div class="jn-asa-shots">' + (S2.shots || []).slice(0, 3).map(function(x){ return '<img src="' + x + '" alt="">'; }).join('') + '</div></div>';
   }
-  function typeTerm(term, my){
-    var q = $('#jnAdMedia .jn-asa-q'), box = $('#jnAdMedia .jn-asa'); if (!q) return;
-    var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (RM) { q.textContent = term; box.classList.add('show'); return; }
+  function drawAds(){
+    var T = A.tabs || [], list = $('#jnAdList'); if (!T.length || !list) return;
+    list.innerHTML = T.map(function(a, i){
+      var kind = a.kind || 'video', tall = kind === 'search' || kind === 'post' || a.tall;
+      return '<article class="jn-card' + (tall ? ' tall' : '') + '" data-card="' + i + '" style="--c:' + colFor(a) + '"><div class="jn-media"><div class="jn-vid' + (kind === 'search' ? ' asa' : '') + '">' + adMedia(a) + '</div>' +
+        ((a.frames || []).length ? '<div class="jn-strip">' + a.frames.slice(0, 4).map(function(x){ return '<img src="' + x + '" alt="">'; }).join('') + '</div>' : '') + '</div>' +
+        '<div class="jn-adb"><div class="hook">' + a.hook + (a.sub ? ' <small>' + a.sub + '</small>' : '') + '</div>' + (a.en ? '<div class="en">' + a.en + '</div>' : '') + '<div class="meta">' + (a.meta || '') + '</div>' +
+        '<dl><dt>' + (kind === 'search' ? 'In the search' : 'In the ad') + '</dt><dd>' + (a.inad || '') + '</dd><dt>The promise</dt><dd>' + (a.promise || '') + '</dd><dt>Today it lands on</dt><dd>' + (a.today || '') + '</dd>' +
+        (a.rebuild ? '<dt>In the rebuild</dt><dd>' + a.rebuild + '</dd>' : '') + '</dl>' +
+        '<div class="go">' + (a.flow ? '<button type="button" class="jn-pill k" data-jngo="' + a.flow + '">Open its flow</button>' : '<span class="jn-foot-l">' + (a.uses || '') + '</span>') + '</div></div></article>';
+    }).join('');
+    T.forEach(function(a, i){
+      var card = $('.jn-card[data-card="' + i + '"]', list), media = $('.jn-media', card);
+      function fitAr(w, h){ if (!w || !h) return; media.style.setProperty('--ar', w + '/' + h); card.classList.toggle('tall', h > w * 1.05 || a.kind === 'search' || a.kind === 'post' || !!a.tall); }
+      var v = $('video', card);
+      if (v) { v.muted = true; v.addEventListener('loadedmetadata', function(){ fitAr(v.videoWidth, v.videoHeight); }); if (v.readyState >= 1) fitAr(v.videoWidth, v.videoHeight); var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      var im = a.kind === 'image' && $('.jn-vid > img', card);
+      if (im && !a.fit) { im.onload = function(){ fitAr(im.naturalWidth, im.naturalHeight); }; if (im.complete) fitAr(im.naturalWidth, im.naturalHeight); }
+      if (a.kind === 'search') typeTerm(card, a.term || String(a.tab || '').replace(/[“”"]/g, ''), i * 1400);
+    });
+  }
+  function typeTerm(card, term, delay){
+    var q = $('.jn-asa-q', card), box = $('.jn-asa', card); if (!q) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { q.textContent = term; box.classList.add('show'); return; }
     var i = 0;
-    (function f(){
-      if (my !== tok) return;
+    function f(){
       if (i <= term.length) { q.textContent = term.slice(0, i++); setTimeout(f, 95); return; }
-      setTimeout(function(){ if (my !== tok) return; box.classList.add('show');
-        setTimeout(function(){ if (my !== tok) return; box.classList.remove('show'); i = 0; q.textContent = ''; setTimeout(f, 600); }, 4200); }, 350);
-    })();
+      setTimeout(function(){ box.classList.add('show');
+        setTimeout(function(){ box.classList.remove('show'); i = 0; q.textContent = ''; setTimeout(f, 600); }, 4200); }, 350);
+    }
+    setTimeout(f, delay || 0);
   }
-  drawAd(0);
+  drawAds();
   if (/[?&]view=proto\b/.test(Q) || /[?&]step=\w/.test(Q)) show('proto');
 })();
 /* JUNO:END */
@@ -2538,7 +2908,7 @@ function tourInit(){
   /* live walkthrough inside the three ad phones */
   var stage = document.getElementById('duoStage'), data = document.getElementById('duoData'); if (!stage || !data) return;
   var D = JSON.parse(data.textContent), F = D.flows, W = M.walk || {}, walk = {on: false, tok: 0};
-  var LABEL = W.button || '▶ Play the walkthrough in the phones';
+  var LABEL = W.button || '▶ 30-second walkthrough';
   var bar = document.createElement('div'); bar.className = 'au-walk';
   bar.innerHTML = '<button type="button" id="walkBtn">' + LABEL + '</button><div class="au-walkbar" id="walkBar"><span id="walkTx"></span><i><b id="walkPr"></b></i></div>';
   var head = $('#duo .au-duo-h'); head.parentNode.insertBefore(bar, head.nextSibling);
@@ -2584,7 +2954,7 @@ function tourInit(){
       for (var k = 0; k < n; k++) {
         var s = steps[k], btn = $('#duoSteps button[data-id="' + s.id + '"]'); if (btn) btn.click();
         cap((W.captions || {})[s.id] || ('<b>' + (btn ? btn.textContent : s.id) + '.</b> ' + (rows[s.id] ? 'Each ad gets its own version of this screen.' : (plain((D.stepCaps || {})[s.id]) || 'Same screen for every ad.'))), Math.round((k + 1) / (n + 1) * 100));
-        await wait(k ? 1500 : 2200, tk);
+        await wait(k ? (W.dwell || 3000) : (W.first || 3600), tk);
         if (k === n - 1) break;
         /* each phone taps through its own screen: an answer first if nothing is picked, then its button */
         for (var pass = 0; pass < 2; pass++) {
@@ -2595,7 +2965,7 @@ function tourInit(){
         }
         $$('.au-finger').forEach(function(f){ f.classList.toggle('on', false); });
       }
-      cap(W.end || 'That’s the three versions. Tap any phone, or a recommendation under it.', 100); await wait(2600, tk);
+      cap(W.end || 'That’s the three versions. Tap any phone, or a recommendation under it.', 100); await wait(W.endMs || 3200, tk);
     } catch (e) {}
     stop();
   }
@@ -2606,7 +2976,7 @@ function tourInit(){
 })();
 /* MOTION:END */
 </script>
-<script type="application/json" id="motionData">{"hero": {"words": ["Arm Away", "Motion Alert", "Activate Siren", "Yours to keep", "Early Warning", "Package detected", "Answer from anywhere", "True privacy", "Front Door", "Driveway"], "icon": "assets/brand/appstore-icon.jpg", "stats": [["★ 4.2", "from 433K ratings on the US App Store"], ["116", "live US Meta ads on 16 Nov, none linking to the App Store"], ["1 month", "of Arlo Secure free with each new camera"], ["1", "first launch every buyer meets, whichever ad sold the camera"]]}, "walk": {"captions": {"ad": "<b>The ad.</b> Early Warning System, “Bath day on the patio”, the Video Doorbell. Today all three go to us.arlo.com.", "welcome": "<b>Welcome.</b> Each version opens on its own ad’s line.", "setup": "<b>Add device.</b> The ad’s device is already picked: cameras, or the doorbell for ad 3.", "name": "<b>Where.</b> The camera’s name goes into every alert.", "ask": "<b>Idea 1.</b> One question per ad: the alerts, the moments, the door.", "value": "<b>Idea 2.</b> Something real before the price: an alert, a saved clip, a ring.", "paywall": "<b>Ideas 3–5.</b> The plan in the app as the free month starts, priced by cameras, with your proof.", "home": "<b>Dashboard.</b> The ✕ goes straight to the app. No second paywall."}, "end": "That’s the three versions. Tap any phone, or a recommendation under it.", "button": "▶ Play the walkthrough in the phones", "taps": {"ask-c": "[data-pick=\"door:del\"]"}}, "heroWalk": "▶ Watch it play in the phones"}</script>
-<script type="application/json" id="junoData">{"month": "November 2026", "icon": "assets/brand/appstore-icon.jpg", "demo": "https://adapty.io/schedule-demo/", "logo": {"src": "assets/brand/logo.svg", "mask": true, "ar": 2.18, "h": 22}, "hero": {"h1": ["Three ads, three promises.", "One first launch for all."], "lead": "Your Meta ads promise alerts that “know who’s there”, moments “you keep” and a doorbell you “answer from anywhere”. Each sells a camera on us.arlo.com; the free month of Arlo Secure then starts in the app. Here is that first launch, opened three ways, in your design.", "byline": "Built from your US App Store listing and in-app purchases, us.arlo.com and 116 live US Meta ads on 16 Nov 2026. Your setup flow isn’t recorded anywhere we can reach, so every screen after the ad is a proposal in your design.", "open": "Open the three versions", "tiles": ["#00608c", "#00283c", "#33cc99", "#e5002b", "#00d095", "#ffb109", "#008ae4"], "words": ["Arm Away", "Arm Home", "Standby", "Motion Alert", "Activate Siren", "Call a Friend", "Emergency Response", "Driveway", "Front Door", "Yours to keep", "Early Warning", "Package detected", "True privacy", "Smart Aware"]}, "stats": [["★ 4.2", "from 433K ratings on the US App Store"], ["116", "live US Meta ads on 16 Nov, none linking to the App Store"], ["1 month", "of Arlo Secure free with each new camera, starting when setup ends"], ["1", "first launch every buyer meets, whichever ad sold the camera"]], "what": {"h2": ["We read Arlo’s ads, listing and plans,", "then rebuilt the first launch around three ads."], "p": "Adapty powers subscriptions for 30,000+ apps, so we see what moves purchases across the market. Nearly 500 apps build their paywalls and onboarding in Adapty Flow Builder, and millions of dollars in subscription revenue pass through it every month. For Arlo we looked at the gap between what your ads promise and the first thing the Arlo Secure app shows a new camera owner.", "launchTitle": "A new camera owner’s first launch today", "launch": [["Sees a Meta ad and buys the camera on us.arlo.com or Amazon.", "Kept."], ["Opens Arlo Secure and adds the device.", "Kept, with the ad’s device already picked."], ["The free month of Arlo Secure starts when setup ends, as your FAQ says.", "Kept, and now it is shown."], ["After the month, your FAQ points them to my.arlo.com to subscribe.", "Moved: the plan is offered in the app at the end of setup."]], "notes": [["Your design, not ours", "Your #00608c tint on the #f2f2f5 ground, Arm Away red #e5002b and Standby green #00d095, your Motion Alert with Mute Notifications, Activate Siren, Call a Friend and Emergency Response, your dashboard and feed rows. Only the order and the first questions change."], ["Your prices, as published", "Smart Aware Single at $9.99 a month, Smart Aware at $19.99 a month or $219.00 a year: your US App Store prices. The free month is the one your FAQ describes. No invented discount, no timer."], ["You may have tested some of this", "We cannot see your live setup or your experiment history. Tell us what you already ran and we will go deeper on the rest."]]}, "ads": {"kick": "Your ads on Meta", "h2": ["116 live ads, six promises.", "None of them opens the app."], "p": "The Meta Ad Library shows 116 active ads from the page “Arlo Smart Home” in the US on 16 November, in 128 versions: 102 link to us.arlo.com, 23 to Amazon, none to the App Store. Every buyer still ends up in Arlo Secure, where the free month starts. So each phone below is framed truthfully: today this ad goes to us.arlo.com; this is the app flow it could open after the purchase.", "tabs": [{"tab": "“Know who’s there”", "n": 18, "kind": "video", "chan": "Meta · video ad · running now", "src": "assets/ads/ad-a.mp4", "poster": "assets/ads/ad-a-poster.jpg", "frames": ["assets/ads/ad-a-1.jpg", "assets/ads/ad-a-2.jpg", "assets/ads/ad-a-3.jpg", "assets/ads/ad-a-4.jpg"], "hook": "“The Arlo Secure Early Warning System sets a new standard in proactive protection. Know who's there and who shouldn't be, keep an eye on deliveries, and spot danger before it spreads.”", "meta": "Meta · video ad · 30 s · since 11 Sep 2026 · “Protection That's A Step Ahead” · links to us.arlo.com/pages/arlo-secure · 18 ads with this promise · Meta Ad Library", "inad": "Detections drawn on real camera views: “Package detected on Doorbell Camera”, “Family Car recognized on Driveway Camera”, “Fire may have been detected on deck”, “Person approaching backyard”.", "promise": "Alerts that say what happened, not just that something moved.", "today": "Your plans page on us.arlo.com: the plan sold on the web, before there is a camera.", "rebuild": "Version A opens on “Know who’s there, and who shouldn’t be.”, asks which of People, Packages, Vehicles, Animals and Fire to turn on, shows a sample Motion Alert from the camera they named, then a paywall comparing No plan with Smart Aware.", "flow": "a"}, {"tab": "“Moments you keep”", "n": 42, "kind": "video", "chan": "Meta · video ad · running now", "src": "assets/ads/ad-b.mp4", "poster": "assets/ads/ad-b-poster.jpg", "fit": true, "frames": ["assets/ads/ad-b-1.jpg", "assets/ads/ad-b-2.jpg", "assets/ads/ad-b-3.jpg", "assets/ads/ad-b-4.jpg"], "hook": "“Bath day on the patio, and the dog has other plans. Some moments you keep, some you share.”", "meta": "Meta · video ad · 10 s · since 11 Nov 2026 · “True Privacy. Yours to Keep.” · links to the Essential Solar camera on us.arlo.com · 42 ads with this promise, the most you run · Meta Ad Library", "inad": "A family on the patio and in the snow, then a clip player, “Rachel and Dog on Patio · Saturday, October 4 · 2:35 PM”, under “True privacy · Yours to keep · Yours to share”.", "promise": "The moments at home, kept and shared.", "today": "The Essential Solar camera on us.arlo.com, then setup in the app, where the free month starts.", "rebuild": "Version B opens on “Some moments you keep, some you share.”, asks what they want to keep, saves their first clip in the Feed, and opens the paywall on that clip with Today and Dec 16, 2026 above the yearly plan.", "flow": "b"}, {"tab": "“Answer from anywhere”", "n": 11, "kind": "video", "chan": "Meta · video ad · running now", "src": "assets/ads/ad-c.mp4", "poster": "assets/ads/ad-c-poster.jpg", "fit": true, "frames": ["assets/ads/ad-c-1.jpg", "assets/ads/ad-c-2.jpg", "assets/ads/ad-c-3.jpg", "assets/ads/ad-c-4.jpg"], "hook": "“Turns out the fix wasn't WebMD. It was better home security! The Arlo Video Doorbell shows you who's at the door in crisp detail… Answer from anywhere and worry less.”", "meta": "Meta · video ad · 16 s · since 11 Sep 2026 · “The Cure? A Better Doorbell” · links to video doorbells on us.arlo.com · 11 doorbell ads, 6 of them to Amazon · Meta Ad Library", "inad": "A creator unboxes the doorbell, pairs it with her phone and answers it from the kitchen: “Googled my symptoms, turns out I just needed better home security”.", "promise": "See who’s at the door, and answer from anywhere.", "today": "Video doorbells on us.arlo.com (or Amazon), then setup in the app.", "rebuild": "Version C skips the device question, asks who comes to the door most, rings the doorbell with “Package detected on Front Door” before any price, and opens a proof-led paywall with Single Camera at $9.99 a month preselected.", "flow": "c"}], "more": "No phone of their own: 25 product and Amazon ads (“Outdoor security powered by the sun…”), which would open by the device they pair; 16 “Every home is different” ads, which would open version A; and 8 privacy ads (“Your home is private. Arlo keeps it that way.”), which would open version B. Counts are ad versions, not spend. We found no Apple Ads for Arlo in the US between 16 October and 16 November 2026.", "foot": "Adapty can pick the first screen of the flow from the campaign behind the install. For Arlo that is the campaign on the us.arlo.com order, or the device being paired for Amazon buyers, passed as a user attribute. A new promise gets its own first screens the same day, with no app release."}, "outcome": {"h2": ["Five ideas,", "one first launch that knows which ad sold the camera."], "k": "Run together", "t": "Three ads, three first launches, and the plan offered the day the free month starts", "nums": [["+20%", "CR to purchase"], ["+15%", "ARPU"]], "do": [["Day 1", "Pass the campaign into Adapty", "The us.arlo.com order already carries the Meta campaign. Attach it (or the device model, for Amazon buyers) to the account as a user attribute, and it picks the setup flow at first open. No app release."], ["Week 1", "One flow per promise", "Early Warning, moments and the doorbell get their own first screens; product and Amazon ads open by the device being paired."], ["Week 2", "Judge each ad on plans, not cameras", "Each ad’s flow against today’s, measured on plans started in the free month and what each install from that ad earns, so spend follows the promise that pays."]]}, "proto": {"kick": "Prototype · one version per ad", "h1": ["Three Meta ads.", "Three first launches of Arlo Secure."], "sub": "One buyer from each ad: the Early Warning System, “Bath day on the patio” and the Video Doorbell. Same app, same prices. Tap the steps, or tap inside any phone."}, "kept": ["Kept: your Add Device step, and the free month your FAQ describes.", "Kept: your Motion Alert layout and its four actions, word for word.", "Kept: the one-month free trial, as published.", "Kept: $9.99, $19.99 and $219.00, your App Store prices.", "Kept: your rating and your own “Trusted by millions” line."], "_tiles": ["#497f97", "#495f69", "#66bd9e", "#cb485f", "#49bf9c", "#daad4c", "#4997c9"]}</script>
+<script type="application/json" id="motionData">{"hero": {"words": ["Arm Away", "Motion Alert", "Activate Siren", "Yours to keep", "Early Warning", "Package detected", "Answer from anywhere", "True privacy", "Front Door", "Driveway"], "icon": "assets/brand/appstore-icon.jpg", "stats": [["★ 4.2", "from 433K ratings on the US App Store"], ["116", "live US Meta ads on 16 Nov, none linking to the App Store"], ["1 month", "of Arlo Secure free with each new camera"], ["1", "first launch every buyer meets, whichever ad sold the camera"]]}, "walk": {"captions": {"ad": "Three buyers: your Early Warning System ad, “Bath day on the patio”, the Video Doorbell.", "welcome": "Each first screen repeats its ad’s promise.", "setup": "The device from the ad, already picked.", "name": "Where it hangs becomes its name in every alert.", "ask": "One question, a different one per ad.", "value": "A first win before any price: an alert, a saved clip, a ring.", "paywall": "The plan offered as the free month starts, at your prices.", "home": "The ✕ goes straight to the dashboard. No second paywall."}, "end": "Three first launches, your design, your prices.", "button": "▶ 30-second walkthrough", "taps": {"ask-c": "[data-pick=\"door:del\"]"}, "first": 3000, "dwell": 2500, "endMs": 3000}, "heroWalk": "▶ Watch it play in the phones"}</script>
+<script type="application/json" id="junoData">{"month": "November 2026", "icon": "assets/brand/appstore-icon.jpg", "demo": "https://adapty.io/schedule-demo/", "logo": {"src": "assets/brand/logo.svg", "mask": true, "ar": 2.18, "h": 22}, "hero": {"h1": ["Three Meta ads, three promises.", "One first launch answers all of them."], "lead": "Your Meta ads promise alerts that “know who’s there”, moments “you keep” and a doorbell you “answer from anywhere”. They sell the camera on us.arlo.com; the free month of Arlo Secure starts in the app. Here is a first launch that keeps each promise, in your design, at your prices.", "byline": "Built from your US App Store listing and prices, us.arlo.com and 116 live US Meta ads on 16 November 2026. We could not record your setup flow, so every screen after the ad is a proposal in your design.", "open": "Open the three flows", "tiles": ["#00608c", "#00283c", "#33cc99", "#e5002b", "#00d095", "#ffb109", "#008ae4"], "words": ["Arm Away", "Arm Home", "Standby", "Motion Alert", "Activate Siren", "Call a Friend", "Emergency Response", "Driveway", "Front Door", "Yours to keep", "Early Warning", "Package detected", "True privacy", "Smart Aware"]}, "stats": [["★ 4.2", "from 433K ratings on the US App Store"], ["116", "live US Meta ads on 16 November, none linking to the App Store"], ["3", "promises with a first launch of their own: Early Warning, “Bath day on the patio”, the Video Doorbell"], ["1", "first launch every buyer meets, whichever ad sold the camera"]], "what": {"h2": ["We watched your ads the way a new buyer does,", "then rebuilt what happens when the camera is set up."], "p": "Adapty powers subscriptions for 30,000+ apps, so we see what moves purchases across the market. Nearly 500 apps build their paywalls and onboarding in Adapty Flow Builder, and millions of dollars in subscription revenue pass through it every month. For Arlo we looked at the gap between what each ad promises and the first thing the Arlo Secure app shows a new camera owner.", "launchTitle": "A new camera owner’s first launch today", "launch": [["A Meta ad, then the camera bought on us.arlo.com or Amazon.", "Kept."], ["Arlo Secure opens on Add Device.", "Kept, with the device from the ad already picked."], ["The free month of Arlo Secure starts when setup ends, as your FAQ says.", "Kept, and now it is shown."], ["After the month, your FAQ points them to my.arlo.com to subscribe.", "Moved: the plan is offered in the app at the end of setup."]], "notes": [["Your design, not ours", "Your #00608c tint on the #f2f2f5 ground, Arm Away red #e5002b and Standby green #00d095, your Motion Alert with Mute Notifications, Activate Siren, Call a Friend and Emergency Response, your dashboard and feed rows. Only the order and the first questions change."], ["Your prices, as published", "Smart Aware Single at $9.99 a month, Smart Aware at $19.99 a month or $219.00 a year, as your US App Store lists them. $219.00 ÷ 12 = $18.25 a month; $19.99 × 12 = $239.88, so the year saves $20.88. The free month is the one your FAQ describes. No invented discount, no timer."], ["You may have tested some of this", "We cannot see your live setup or your experiment history. Tell us what you already ran and we will go deeper on the rest."]]}, "ads": {"kick": "Your ads on Meta", "h2": ["One channel, 116 live ads.", "Three different promises."], "p": "The Meta Ad Library shows 116 active ads from “Arlo Smart Home” in the US on 16 November, in 128 versions: 102 link to us.arlo.com, 23 to Amazon, none to the App Store. Every buyer still ends up in Arlo Secure, where the free month starts. So each card says it plainly: today this ad goes to us.arlo.com; the phone shows the app flow it could open once the camera is home.", "tabs": [{"tab": "“Know who’s there”", "n": 18, "kind": "video", "chan": "Meta · sells the plan", "src": "assets/ads/ad-a.mp4", "poster": "assets/ads/ad-a-poster.jpg", "frames": ["assets/ads/ad-a-1.jpg", "assets/ads/ad-a-2.jpg", "assets/ads/ad-a-3.jpg", "assets/ads/ad-a-4.jpg"], "hook": "“The Arlo Secure Early Warning System sets a new standard in proactive protection. Know who's there and who shouldn't be…”", "meta": "Meta · video · 30 s · since 11 Sep 2026 · 18 ads with this promise", "inad": "Detections drawn on real camera views: “Package detected on Doorbell Camera”, “Family Car recognized on Driveway Camera”, “Fire may have been detected on deck”, “Person approaching backyard”.", "promise": "Alerts that say what happened, not just that something moved.", "today": "Your plans page on us.arlo.com: the plan sold on the web, before there is a camera.", "rebuild": "“Know who’s there, and who shouldn’t be.” first; the camera already picked and named where it hangs; one question, which alerts to turn on; a sample Motion Alert from their camera before any price; the paywall shows what stops without a plan, every camera monthly first.", "flow": "a", "sub": "Links straight to your plans page, us.arlo.com/pages/arlo-secure"}, {"tab": "“Moments you keep”", "n": 42, "kind": "video", "chan": "Meta · most run", "src": "assets/ads/ad-b.mp4", "poster": "assets/ads/ad-b-poster.jpg", "fit": true, "frames": ["assets/ads/ad-b-1.jpg", "assets/ads/ad-b-2.jpg", "assets/ads/ad-b-3.jpg", "assets/ads/ad-b-4.jpg"], "hook": "“Bath day on the patio, and the dog has other plans. Some moments you keep, some you share.”", "meta": "Meta · video · 10 s · since 11 Nov 2026 · links to the Essential Solar camera", "inad": "A family on the patio and in the snow, then a clip player, “Rachel and Dog on Patio · Saturday, October 4 · 2:35 PM”, under “True privacy · Yours to keep · Yours to share”.", "promise": "The moments at home, kept and shared.", "today": "The Essential Solar camera on us.arlo.com, then setup in the app, where the free month starts.", "rebuild": "“Some moments you keep, some you share.” over the ad’s patio frame; one question, what they want to keep; their first clip saved in the Feed before any price; the paywall opens on that clip, with Today and Dec 16, 2026 above the year.", "flow": "b", "sub": "42 of your 116 live ads sell this promise, the most you run"}, {"tab": "“Answer from anywhere”", "n": 11, "kind": "video", "chan": "Meta · running now", "src": "assets/ads/ad-c.mp4", "poster": "assets/ads/ad-c-poster.jpg", "fit": true, "frames": ["assets/ads/ad-c-1.jpg", "assets/ads/ad-c-2.jpg", "assets/ads/ad-c-3.jpg", "assets/ads/ad-c-4.jpg"], "hook": "“Turns out the fix wasn't WebMD. It was better home security!”", "meta": "Meta · video · 16 s · since 11 Sep 2026 · links to video doorbells on us.arlo.com", "inad": "A creator unboxes the doorbell, pairs it with her phone and answers it from the kitchen: “Googled my symptoms, turns out I just needed better home security”.", "promise": "See who’s at the door, and answer from anywhere.", "today": "Video doorbells on us.arlo.com or Amazon, then setup in the app.", "rebuild": "“See who’s at the door. Answer from anywhere.” first; the Video Doorbell already picked; one question, who comes to the door; the doorbell rings with “Package detected” before any price; the paywall leads with your 4.2 stars, Single Camera at $9.99 first.", "flow": "c", "sub": "11 doorbell ads, 6 of them to Amazon"}], "more": "Also running, with no phone of their own: 25 product and Amazon ads (“Outdoor security powered by the sun…”), which would open by the device they pair; 16 “Every home is different” ads, which would open the Early Warning flow; and 8 privacy ads (“Your home is private. Arlo keeps it that way.”), which would open the moments flow. Counts are ad versions, not spend. We found no Apple Ads for Arlo in the US between 16 October and 16 November 2026.", "foot": "Adapty picks the flow at first open from the campaign behind the install: for Arlo, the Meta campaign on the us.arlo.com order, or the device being paired for Amazon buyers, passed as a user attribute. Buyers from your other ads keep today’s first launch until you choose to split them."}, "outcome": {"h2": ["Five ideas,", "one first launch per ad."], "k": "Run together", "t": "Every ad’s promise kept on the screen it pays on", "nums": [["+10–20%", "purchases"], ["+10–15%", "ARPU"]], "do": [["Do this week", "Offer the plan at the end of setup", "One new screen, built in Flow Builder, live without an app release. Today your FAQ sends people to my.arlo.com to subscribe once the free month is over."], ["Then", "One setup flow, the ad as the variable", "Three promises, one template: the first screen, the question and the paywall’s headline change with the Meta campaign on the us.arlo.com order, or the device being paired."], ["And measure", "Judge each ad on plans, not cameras", "Adapty reports trials, purchases and revenue for the Early Warning, moments and doorbell flows separately, so spend follows the promise that pays."]], "cap": "Adapty’s range for a structural change to the flow. They overlap, so they don’t add up: each flow is its own A/B test against today’s first launch, judged on what the installs from that ad earn.", "img": "assets/hero/paywall-b.png"}, "proto": {"kick": "Prototype · one first launch per ad", "h1": ["Three Meta ads.", "Three first launches."], "sub": "One buyer from your Early Warning System ad, one from “Bath day on the patio”, one from your Video Doorbell ad. Same app, same prices. Tap the steps, or tap inside any phone: set up, answer, see a first alert, choose a plan, close it."}, "kept": ["Kept: your Add Device step, and the camera’s name in every alert, as your Motion Alert writes it.", "Kept: your Motion Alert and its four actions, word for word.", "Kept: the free month your FAQ describes, from the day setup ends.", "Kept: $9.99, $19.99 and $219.00, your US App Store prices.", "Kept: your rating and your own “Trusted by millions” line."], "langNote": {"de": "Phones in German, translated by us; your ad stays in English. The App Store no longer lists in-app prices by country, so the plans stay at your US prices; the rating is your German one, 4.0 from 21,754.", "fr": "Phones in French, translated by us; your ad stays in English. The App Store no longer lists in-app prices by country, so the plans stay at your US prices; the rating is your French one, 4.2 from 20,790."}, "_tiles": ["#497f97", "#495f69", "#66bd9e", "#cb485f", "#49bf9c", "#daad4c", "#4997c9"]}</script>
 </body>
 </html>
